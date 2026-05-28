@@ -1,64 +1,65 @@
-# EPAM SYSTEMS VIETNAM - ULTIMATE TEST AUTOMATION INTERVIEW MASTER SCRIPT
+# EPAM SYSTEMS VIETNAM - COMPLETE AUTOMATION ENGINEER INTERVIEW SCRIPT
 
-## 📌 TABLE OF CONTENTS (Click to jump)
+## 📌 TABLE OF CONTENTS
 
 *   [PART 1: PROFESSIONAL SELF-INTRODUCTION](#part-1-professional-self-introduction)
-*   [PART 2: DEEP-DIVE EXPERIENCE QUESTIONS (SENIOR LEVEL)](#part-2-deep-dive-experience-questions-senior-level)
-    *   [Q1: Robot Framework Custom Library Architecture & Scopes](#q1-robot-framework-custom-library-architecture--scopes)
-    *   [Q2: Phone Farm Resource Allocation & Concurrency Control](#q2-phone-farm-resource-allocation--concurrency-control)
-    *   [Q3: Context Switching in Hybrid Apps & Native Testing Strategy](#q3-context-switching-in-hybrid-apps--native-testing-strategy)
-    *   [Q4: Mitigating AI Hallucinations via Automated Validation Engine](#q4-mitigating-ai-hallucinations-via-automated-validation-engine)
+*   [PART 2: DETAILED AUTOMATION EXPERIENCES & REAL PROJECTS (STAR METHOD)](#part-2-detailed-automation-experiences--real-projects-star-method)
+    *   [QUESTION 1: AI-Driven Automated Test Generation System at LG](#question-1-ai-driven-automated-test-generation-system-at-lg)
+    *   [QUESTION 2: API Testing in an Embedded Automotive Environment](#question-2-api-testing-in-an-embedded-automotive-environment)
+    *   [QUESTION 3: Setting Up CI/CD Pipelines and Managing Infrastructure](#question-3-setting-up-cicd-pipelines-and-managing-infrastructure)
 *   [PART 3: MIDDLE-LEVEL SCENARIO & EXPERIENCE QUESTIONS](#part-3-middle-level-scenario--experience-questions)
-    *   [Q5: Standard Project Architecture for Maintainable Automation](#q5-standard-project-architecture-for-maintainable-automation)
-    *   [Q6: Exception Handling Inside Custom Python Libraries](#q6-exception-handling-inside-custom-python-libraries)
-    *   [Q7: Implementing Data-Driven Testing (DDT) in Robot Framework](#q7-implementing-data-driven-testing-ddt-in-robot-framework)
-    *   [Q8: Essential ADB Commands for Everyday Android Automation](#q8-essential-adb-commands-for-everyday-android-automation)
-    *   [Q9: Handling Dynamic UI Loading Without Hardcoded Sleeps](#q9-handling-dynamic-ui-loading-without-hardcoded-sleeps)
-    *   [Q10: Debugging Local Pass vs. Jenkins CI/CD Failures](#q10-debugging-local-pass-vs-jenkins-cicd-failures)
-    *   [Q11: Session Token and State Management in Python API Testing](#q11-session-token-and-state-management-in-python-api-testing)
-    *   [Q12: Scripted vs. Declarative Jenkins Pipeline Approach](#q12-scripted-vs-declarative-jenkins-pipeline-approach)
-    *   [Q13: Risk-Based Regression Execution Under Tight Timelines](#q13-risk-based-regression-execution-under-tight-timelines)
-    *   [Q14: Resolving Reopened Bugs and New Defect Spinoffs](#q14-resolving-reopened-bugs-and-new-defect-spinoffs)
-*   [PART 4: CORE QUALITY ASSURANCE & TEST AUTOMATION FUNDAMENTALS](#part-4-core-quality-assurance--test-automation-fundamentals)
-    *   [Q15: SDLC vs. STLC Core Workflows](#q15-sdlc-vs-stlc-core-workflows)
-    *   [Q16: Verification vs. Validation Definitions](#q16-verification-vs-validation-definitions)
-    *   [Q17: Mandatory Fields for Professional Test Cases](#q17-mandatory-fields-for-professional-test-cases)
-    *   [Q18: Core Distinctions: Smoke, Sanity, and Regression Testing](#q18-core-distinctions-smoke-sanity-and-regression-testing)
-    *   [Q19: Technical Severity vs. Business Priority Matrix](#q19-technical-severity-vs-business-priority-matrix)
-    *   [Q20: Comprehensive Defect Lifecycle States](#q20-comprehensive-defect-lifecycle-states)
-    *   [Q21: Black-box, White-box, and Gray-box Testing Methodologies](#q21-black-box-white-box-and-gray-box-testing-methodologies)
-    *   [Q22: Functional vs. Non-functional Testing Targets](#q22-functional-vs-non-functional-testing-targets)
-    *   [Q23: Anatomy of an Actionable and Flawless Bug Report](#q23-anatomy-of-an-actionable-and-flawless-bug-report)
-    *   [Q24: Organizational Test Strategy vs. Project Test Plan](#q24-organizational-test-strategy-vs-project-test-plan)
-    *   [Q25: Boundary Value Analysis & Equivalence Partitioning Test Design](#q25-boundary-value-analysis--equivalence-partitioning-test-design)
-    *   [Q26: Exhaustive Security & Functional Testing for Login Features](#q26-exhaustive-security--functional-testing-for-login-features)
-    *   [Q27: Handling "Cannot Reproduce" Feedback Professionally](#q27-handling-cannot-reproduce-feedback-professionally)
-    *   [Q28: Determining Project Exit Criteria Programmatically](#q28-determining-project-exit-criteria-programmatically)
-    *   [Q29: Professional Defect Lifecycle Execution Inside Jira](#q29-professional-defect-lifecycle-execution-inside-jira)
-    *   [Q30: Core Verifications for HTTP REST API Architecture](#q30-core-verifications-for-http-rest-api-architecture)
-    *   [Q31: Responsive Web Testing Strategies and Execution Tools](#q31-responsive-web-testing-strategies-and-execution-tools)
-    *   [Q32: Analytical Selection Criteria for Cross-Browser Testing](#q32-analytical-selection-criteria-for-cross-browser-testing)
-    *   [Q33: Risk-Based Prioritization When Faced With Extreme Deadlines](#q33-risk-based-prioritization-when-faced-with-extreme-deadlines)
-    *   [Q34: Comprehensive Integration Testing for E-commerce Carts](#q34-comprehensive-integration-testing-for-e-commerce-carts)
-    *   [Q35: Formulating a 4-Hour Emergency Automation Execution Plan](#q35-formulating-a-4-hour-emergency-automation-execution-plan)
-    *   [Q36: Retesting vs. Regression Suite Scope Optimization](#q36-retesting-vs-regression-suite-scope-optimization)
-    *   [Q37: Managing Technical Risk Disagreements with Product Managers](#q37-managing-technical-risk-disagreements-with-product-managers)
-    *   [Q38: Boundary and Security Test Matrix for File Upload Forms](#q38-boundary-and-security-test-matrix-for-file-upload-forms)
-    *   [Q39: Comprehensive Validation Vectors for System Search Inputs](#q39-comprehensive-validation-vectors-for-system-search-inputs)
-    *   [Q40: Strategic Mitigation of "Not a Bug" Rejections](#q40-strategic-mitigation-of-not-a-bug-rejections)
-    *   [Q41: Test Scenario vs. Test Case Allocation Strategies](#q41-test-scenario-vs-test-case-allocation-strategies)
-    *   [Q42: Executing Exploratory Testing Without Feature Specifications](#q42-executing-exploratory-testing-without-feature-specifications)
-    *   [Q43: Advanced Performance Engineering: Load, Stress, and Spike](#q43-advanced-performance-engineering-load-stress-and-spike)
-    *   [Q44: Ethical Protocols for Processing High-Severity Security Leaks](#q44-ethical-protocols-for-processing-high-severity-security-leaks)
+    *   [M1: Robot Framework Project Clean & Maintainable Structure](#m1-robot-framework-project-clean--maintainable-structure)
+    *   [M2: Exception Handling Inside Custom Python Libraries](#m2-exception-handling-inside-custom-python-libraries)
+    *   [M3: Implementing Data-Driven Testing (DDT) in Robot Framework](#m3-implementing-data-driven-testing-ddt-in-robot-framework)
+    *   [M4: Essential ADB Commands for Everyday Android Automation](#m4-essential-adb-commands-for-everyday-android-automation)
+    *   [M5: Handling Dynamic UI Elements Without Hardcoded Sleeps](#m5-handling-dynamic-ui-elements-without-hardcoded-sleeps)
+    *   [M6: Troubleshooting Local Pass vs. Jenkins CI/CD Failures](#m6-troubleshooting-local-pass-vs-jenkins-cicd-failures)
+    *   [M7: Handling Authentication Tokens in Python API Testing](#m7-handling-authentication-tokens-in-python-api-testing)
+    *   [M8: Scripted vs. Declarative Jenkins Pipeline Choice](#m8-scripted-vs-declarative-jenkins-pipeline-choice)
+    *   [M9: Regression Testing Under Extreme Timeline Constraints](#m9-regression-testing-under-extreme-timeline-constraints)
+    *   [M10: Reopening Existing Bugs vs. Creating New Defect Spinoffs](#m10-reopening-existing-bugs-vs-creating-new-defect-spinoffs)
+*   [PART 4: 30 CORE QUALITY ASSURANCE QUESTIONS & SMART ANSWERS](#part-4-30-core-quality-assurance-questions--smart-answers)
+    *   [CORE 1: Difference Between SDLC and STLC](#core-1-difference-between-sdlc-and-stlc)
+    *   [CORE 2: Verification vs. Validation](#core-2-verification-vs-validation)
+    *   [CORE 3: Standard Fields in a High-Quality Test Case](#core-3-standard-fields-in-a-high-quality-test-case)
+    *   [CORE 4: Smoke, Sanity, and Regression Testing Distinctions](#core-4-smoke-sanity-and-regression-testing-distinctions)
+    *   [CORE 5: Severity vs. Priority with Extreme Examples](#core-5-severity-vs-priority-with-extreme-examples)
+    *   [CORE 6: Core States in a Standard Bug Life Cycle](#core-6-core-states-in-a-standard-bug-life-cycle)
+    *   [CORE 7: Black-box, White-box, and Gray-box Testing](#core-7-black-box-white-box-and-gray-box-testing)
+    *   [CORE 8: Functional vs. Non-functional Testing with Examples](#core-8-functional-vs-non-functional-testing-with-examples)
+    *   [CORE 9: Essential Components of a Great Bug Report](#core-9-essential-components-of-a-great-bug-report)
+    *   [CORE 10: Test Plan vs. Test Strategy Documents](#core-10-test-plan-vs-test-strategy-documents)
+    *   [CORE 11: Applying BVA and EP on Age Field (18-60)](#core-11-applying-bVA-and-ep-on-age-field-18-60)
+    *   [CORE 12: Essential Test Cases for a User Login Feature](#core-12-essential-test-cases-for-a-user-login-feature)
+    *   [CORE 13: Handling 'Cannot Reproduce' Feedback Professionally](#core-13-handling-cannot-reproduce-feedback-professionally)
+    *   [CORE 14: Determining When to Stop Testing (Exit Criteria)](#core-14-determining-when-to-stop-testing-exit-criteria)
+    *   [CORE 15: Standard Bug Tracking Workflow Inside Jira](#core-15-standard-bug-tracking-workflow-inside-jira)
+    *   [CORE 16: Verifying GET, POST, PUT, DELETE and HTTP Status Codes](#core-16-verifying-get-post-put-delete-and-http-status-codes)
+    *   [CORE 17: Focus Areas and Tools in Responsive Web Testing](#core-17-focus-areas-and-tools-in-responsive-web-testing)
+    *   [CORE 18: Cross-Browser Testing and Browser Selection Criteria](#core-18-cross-browser-testing-and-browser-selection-criteria)
+    *   [CORE 19: Handling 200 Unexecuted Test Cases with a 1-Day Deadline](#core-19-handling-200-unexecuted-test-cases-with-a-1-day-deadline)
+    *   [CORE 20: Test Cases for an E-commerce 'Add to Cart' Feature](#core-20-test-cases-for-an-e-commerce-add-to-cart-feature)
+    *   [CORE 21: Allocating Testing Scope for 5 PM Build Releasing at 9 AM](#core-21-allocating-testing-scope-for-5-pm-build-releasing-at-9-am)
+    *   [CORE 22: Retesting vs. Regression Suite Scope Optimization](#core-22-retesting-vs-regression-suite-scope-optimization)
+    *   [CORE 23: Handling Critical Defects Releasing with PM Approval](#core-23-handling-critical-defects-releasing-with-pm-approval)
+    *   [CORE 24: Comprehensive Test Scenarios for a File Upload Component](#core-24-comprehensive-test-scenarios-for-a-file-upload-component)
+    *   [CORE 25: Comprehensive Test Cases for a Website Search Box](#core-25-comprehensive-test-cases-for-a-website-search-box)
+    *   [CORE 26: Handling Defect Rejections Marked as 'Not a Bug'](#core-26-handling-defect-rejections-marked-as-not-a-bug)
+    *   [CORE 27: Test Scenario vs. Test Case Allocation Strategies](#core-27-test-scenario-vs-test-case-allocation-strategies)
+    *   [CORE 28: Testing a Feature with Absolute Zero Documentation](#core-28-testing-a-feature-with-absolute-zero-documentation)
+    *   [CORE 29: Performance, Load, Stress, and Spike Testing Metrics](#core-29-performance-load-stress-and-spike-testing-metrics)
+    *   [CORE 30: Processing Severe Security Flaws and Data Exposure](#core-30-processing-severe-security-flaws-and-data-exposure)
 
 ---
 
-## <a id="part-1-professional-self-introduction"></a>PART 1: PROFESSIONAL SELF-INTRODUCTION
+## PART 1: PROFESSIONAL SELF-INTRODUCTION
 
-**Interviewer:** *"Hi Duong, welcome to EPAM Systems. To start, could you please introduce yourself and give us a brief overview of your background?"*
+**[Interviewer]:** *"Hi Duong, welcome to EPAM Systems. To start, could you please introduce yourself and give us a brief overview of your background?"*
 
-**Your Response:**
-"Hi, thank you for having me today. I am an Automation Engineer with over 3 years of professional experience specializing in Android automation, automotive software testing, custom framework development, and end-to-end CI/CD workflows. I graduated from Hanoi University of Science and Technology with a Bachelor's degree in Automation and Control Engineering, which gave me a very strong foundation in systems logic and programming.
+**[Your Response]:**
+"Hi, thank you for having me today. I am an Automation Engineer with over 3 years of professional experience specializing in Android automation, automotive software testing, custom framework development, and end-to-end CI/CD workflows. 
+
+I graduated from Hanoi University of Science and Technology with a Bachelor's degree in Automation and Control Engineering, which gave me a very strong foundation in systems logic and programming. 
 
 Currently, at LG Electronics, I work as a Software Engineer focusing on building custom Python libraries for Robot Framework to test Android-based In-Vehicle Infotainment (IVI) systems. In this role, I engineered an AI-driven desktop tool utilizing the GitHub Copilot API to automate test script generation, which significantly optimized our execution flow under strict ASPICE quality standards.
 
@@ -68,298 +69,202 @@ My core technical stack includes Python, Java, Robot Framework, UIAutomator, Sel
 
 ---
 
-## <a id="part-2-deep-dive-experience-questions-senior-level"></a>PART 2: DEEP-DIVE EXPERIENCE QUESTIONS (SENIOR LEVEL)
+## PART 2: DETAILED AUTOMATION EXPERIENCES & REAL PROJECTS (STAR METHOD)
 
-### <a id="q1-robot-framework-custom-library-architecture--scopes"></a>Q1: Robot Framework Custom Library Architecture & Scopes
-**Interviewer:** *"You mentioned developing custom Python libraries for Robot Framework. Which Library API type did you use (Static, Dynamic, or Hybrid), and how did you manage library scopes to handle system states and prevent memory leaks during massive regression runs?"*
+### <a id="question-1-can-you-explain-the-architecture-and-workflow-of-your-ai-driven-automated-test-generation-system-at-lg"></a>QUESTION 1: AI-Driven Automated Test Generation System at LG
+**[Interviewer]:** *"Can you explain the architecture and workflow of your AI-Driven Automated Test Generation System at LG?"*
 
-**Your Response:**
-"In my project at LG, I primarily implemented the Static Library API because our custom keywords mapped directly to Python functions, which is highly maintainable. However, for complex automotive components where keywords needed to be generated dynamically based on hardware configurations, I utilized the Dynamic API by implementing `get_keyword_names` and `run_keyword`.
+**[Your Response]:**
+"Certainly. At LG Electronics, writing comprehensive Robot Framework scripts for complex automotive features was highly repetitive and time-consuming. However, we already had a very solid foundation: our team had built a mature library of custom Python test libraries and well-defined automation keywords documented in Markdown instruction files.
 
-Regarding scope, I carefully set `ROBOT_LIBRARY_SCOPE = 'TEST SUITE'` or `'TEST CASE'` depending on the module. For instance, hardware connection handles used a `GLOBAL` scope to avoid the overhead of reconnecting every time, but I strictly implemented the `close` or `teardown` methods in Robot Framework’s suite teardowns to release ADB instances and socket connections, preventing memory leaks and dangling processes during overnight executions."
+To solve this, I designed and developed a lightweight Windows Desktop Application using Python. The workflow is straightforward: a QA engineer inputs the test scenario details—specifically the pre-actions, test steps, and expected outputs—into the tool. Under the hood, the application communicates with the GitHub Copilot API using a secure business API key. I engineered the prompt to include our local Markdown instruction files. This strictly constraints the AI model to only generate test scripts that utilize our pre-defined, valid Robot Framework keywords. 
 
-### <a id="q2-phone-farm-resource-allocation--concurrency-control"></a>Q2: Phone Farm Resource Allocation & Concurrency Control
-**Interviewer:** *"At Samsung, you optimized phone farm systems on Ubuntu. When running parallel Jenkins pipelines against a shared pool of physical Android devices, how did you handle resource locking to prevent two concurrent test suites from hijacking the same device?"*
+The tool instantly outputs a structured and syntactically correct `.robot` file. Because automotive systems demand 100% safety and compliance, we enforce a 'human-in-the-loop' workflow where engineers manually review and validate the generated scripts before triggering execution, handling exceptions manually if needed. This solution drastically reduced manual boilerplate coding and allowed our engineers to focus heavily on edge-case design and script code review."
 
-**Your Response:**
-"That was one of the biggest challenges we faced when scaling the framework. To prevent test collisions where two Jenkins jobs try to send ADB commands to the same target, I implemented a resource locking mechanism.
+### <a id="question-2-how-did-you-approach-api-testing-in-an-embedded-automotive-environment"></a>QUESTION 2: API Testing in an Embedded Automotive Environment
+**[Interviewer]:** *"How did you approach API testing in an embedded automotive environment?"*
 
-Initially, we utilized the Jenkins Lockable Resources plugin, where each physical device was registered as a resource with a specific label (like `Galaxy_S23`). When a pipeline started, it requested a lock on an available device under that label. Later, to make the system independent of Jenkins, I built a lightweight Python-based device router on the Ubuntu server. Before a test suite initialized, it queried this router via a REST API. The router checked the current status of connected devices via `adb devices`, locked an available device ID in a local database, and passed the `udid` back to the executing test runner. Once the test finished, the teardown script sent a release signal to unlock the device."
+**[Your Response]:**
+"In our automotive IVI projects, we operate on an Android-based operating system running directly on an embedded hardware board. A critical challenge was ensuring flawless real-time communication between this physical hardware and the cloud backend server.
 
-### <a id="q3-context-switching-in-hybrid-apps--native-testing-strategy"></a>Q3: Context Switching in Hybrid Apps & Native Testing Strategy
-**Interviewer:** *"Your CV shows experience with both UIAutomator (Java) and Selenium (Python) at Samsung. If an Android application contains embedded WebViews, how did you handle context switching? Also, why did you choose this native combination instead of using an out-of-the-box solution like Appium?"*
+Instead of relying solely on manual tools like Postman, which cannot be easily automated alongside hardware actions, I built custom, lightweight API keywords directly inside our Robot Framework ecosystem using Python's `requests` and `WebSocket` libraries. 
 
-**Your Response:**
-"For hybrid applications containing WebViews, we handled context switching by leveraging the underlying driver capabilities. In our Python utilities, we used Appium/Selenium protocols to switch the execution context from `NATIVE_APP` to `WEBVIEW_<package_name>` once the web context became available via ADB.
+A typical automated test flow involves a keyword sending an ADB command to trigger a physical action on the embedded board, followed immediately by an API keyword that queries the backend server to verify if the correct telemetry data, vehicle state, or log event was synchronized. Wrapping these technical API calls into simple Robot Framework keywords allowed our entire QA team to easily combine UI interactions and API validations within a single test suite, ensuring robust end-to-end integration testing."
 
-As for why we didn't use Appium as our sole, overarching solution: Appium adds an extra wrapper layer on top of UIAutomator and Selenium, which introduces overhead and latency. Because we were running thousands of tests daily on a massive local phone farm for deep Google Build Approval Tests, execution speed and stability were our top priorities. Writing native Java code with UIAutomator allowed us to interact directly with internal Android APIs, bypass Appium's driver overhead, and achieve a significantly higher execution success rate with lower flakiness."
+### <a id="question-3-what-was-your-exact-role-in-setting-up-cicd-pipelines-and-managing-infrastructure"></a>QUESTION 3: Setting Up CI/CD Pipelines and Managing Infrastructure
+**[Interviewer]:** *"What was your exact role in setting up CI/CD pipelines and managing infrastructure?"*
 
-### <a id="q4-mitigating-ai-hallucinations-via-automated-validation-engine"></a>Q4: Mitigating AI Hallucinations via Automated Validation Engine
-**Interviewer:** *"Regarding your AI-Driven Test Generation tool using the GitHub Copilot API, LLMs are known to hallucinate or generate invalid code syntax. How did your Python desktop tool validate that the generated `.robot` scripts were syntactically correct and safely mapped to your pre-defined keywords before the human review phase?"*
+**[Your Response]:**
+"I handled the complete end-to-end configuration of our test execution infrastructure. I did not just maintain existing jobs; I actively configured Jenkins slave nodes from scratch on both Ubuntu and Windows environments. This involved setting up the entire execution runtime, managing environment paths, configuring localized ADB server environments, and ensuring stable physical connectivity to our Android devices and embedded boards.
 
-**Your Response:**
-"To mitigate LLM hallucinations and ensure safety, I built a two-layered validation engine directly into the Python desktop application. First, I used strict prompt anchoring. Along with the test scenario input, the tool automatically injected our system prompt containing the exact allowed keyword schemas and rules parsed from our Markdown files, explicitly instructing the model to reject any out-of-scope actions.
-
-Second, before saving the output as a `.robot` file, the tool executed a Static Code Analysis phase using Robot Framework's native `robot.parsing` module in Python. This programmatic check parsed the AI's output into an Abstract Syntax Tree (AST) to verify structure, indentation, and to ensure that every keyword called by the AI existed within our valid keyword registry. If the script failed this automated sanity check, the tool flagged it immediately, preventing corrupted code from ever reaching the QA engineer for review."
+Furthermore, I wrote the Groovy-based Jenkins Declarative Pipeline scripts. Whenever a developer or automation engineer pushes code updates to our Git repositories, a webhook automatically triggers the pipeline. The script pulls the latest code, scans for an available hardware node, provisions the environment, executes the Robot Framework test suites targeting the specific device UDID, parses the output XML data, and automatically aggregates the results into an HTML report. I also built automated error-handling routines; for instance, if a device is detected as 'unauthorized' or 'offline' via ADB prior to execution, the pipeline instantly bypasses that node and fires an immediate Slack or email notification to the infra team, effectively preventing false-negative test results."
 
 ---
 
-## <a id="part-3-middle-level-scenario--experience-questions"></a>PART 3: MIDDLE-LEVEL SCENARIO & EXPERIENCE QUESTIONS
+## PART 3: MIDDLE-LEVEL SCENARIO & EXPERIENCE QUESTIONS
 
-### <a id="q5-standard-project-architecture for-maintainable-automation"></a>Q5: Standard Project Architecture for Maintainable Automation
-**Interviewer:** *"How do you structure your Robot Framework project to ensure it is clean and maintainable?"*
+### <a id="m1-robot-framework-project-clean--maintainable-structure"></a>M1: Robot Framework Project Clean & Maintainable Structure
+**[Interviewer]:** *"How do you structure your Robot Framework project to ensure it is clean and maintainable?"*
 
-**Your Response:**
-"I follow a multi-layered structure to separate test logic from implementation:
+**[Your Response]:**
+"I follow a multi-layered structure to separate test logic from implementation details:
 *   **Tests Layer:** Contains `.robot` files with high-level test cases written in a clear, behavior-driven format (Gherkin style).
 *   **Keywords/Resources Layer:** Contains `.resource` files where I group reusable user keywords.
-*   **Libraries Layer:** Contains custom Python classes (`.py`) where I write low-level automation logic (like device control or custom API calls) that Robot Framework's native libraries don't support.
-*   **Data Layer:** Contains configurations, variables, or environment setup files."
+*   **Libraries Layer:** Contains custom Python classes (`.py`) where I write low-level automation logic (like device control or custom API calls) that Robot Framework's native libraries don't support out of the box.
+*   **Data Layer:** Contains environment configurations, endpoints, variables, or localization files."
 
-### <a id="q6-exception-handling-inside-custom-python-libraries"></a>Q6: Exception Handling Inside Custom Python Libraries
-**Interviewer:** *"How do you handle exceptions or errors inside your custom Python libraries so that Robot Framework catches them correctly?"*
+### <a id="m2-exception-handling-inside-custom-python-libraries"></a>M2: Exception Handling Inside Custom Python Libraries
+**[Interviewer]:** *"How do you handle exceptions or errors inside your custom Python libraries so that Robot Framework catches them correctly?"*
 
-**Your Response:**
-"Inside my Python code, I use standard `try-except` blocks to handle unexpected issues (like an ADB command timeout). If an error is fatal and should fail the test case, I explicitly raise an exception—either a standard Python `RuntimeError` or a custom exception. Robot Framework automatically catches any unhandled exception raised by a Python library and marks that specific keyword and test step as 'FAILED' with the exception message in the log."
+**[Your Response]:**
+"Inside my Python library code, I wrap risky operations in standard `try-except` blocks to handle unexpected system disruptions gracefully. If an error is fatal and should break the execution flow, I explicitly raise an exception—either a standard Python `RuntimeError` or a customized domain exception. Robot Framework automatically catches any unhandled exception raised by an underlying Python library, mapping it natively to mark that specific test keyword step as 'FAILED' with the exact exception message preserved in the execution log logs."
 
-### <a id="q7-implementing-data-driven-testing-ddt-in-robot-framework"></a>Q7: Implementing Data-Driven Testing (DDT) in Robot Framework
-**Interviewer:** *"How do you implement Data-Driven Testing in Robot Framework? For example, testing the same flow with multiple inputs."*
+### <a id="m3-implementing-data-driven-testing-ddt-in-robot-framework"></a>M3: Implementing Data-Driven Testing (DDT) in Robot Framework
+**[Interviewer]:** *"How do you implement Data-Driven Testing in Robot Framework? For example, testing the same flow with multiple inputs."*
 
-**Your Response:**
-"I use the `Test Template` feature in Robot Framework. I define a core keyword that represents the test workflow (e.g., `Login With Credentials`), and then under the `Test Cases` section, I list the rows of data inputs and expected outcomes. This allows me to run the exact same logic multiple times with different data sets (like valid, invalid, and empty strings) without duplicating the test steps, keeping the script extremely dry and clean."
+**[Your Response]:**
+"I achieve this cleanly by utilizing the native `Test Template` feature in Robot Framework. I define a standardized core keyword workflow that represents the functional path (for example, `Login With Credentials`), and then under the standard `Test Cases` header, I structure the rows representing data configurations and corresponding expected outcomes. This enables me to iterate the exact same logic repeatedly across distinct input variations (such as valid, invalid, or edge-case string boundaries) without any copy-pasting, preserving clean and DRY code."
 
-### <a id="q8-essential-adb-commands-for-everyday-android-automation"></a>Q8: Essential ADB Commands for Everyday Android Automation
-**Interviewer:** *"Since you work a lot with Android automation, what are the most common ADB commands you use in your automation scripts?"*
+### <a id="m4-essential-adb-commands-for-everyday-android-automation"></a>M4: Essential ADB Commands for Everyday Android Automation
+**[Interviewer]:** *"Since you work a lot with Android automation, what are the most common ADB commands you use in your automation scripts?"*
 
-**Your Response:**
-"I use ADB heavily to control device states within my Python utilities:
-*   `adb devices` to check handset availability.
-*   `adb shell am start` and `am force-stop` to launch or kill specific Android application packages.
-*   `adb shell input tap/text/keyevent` to simulate user actions when standard element locators are not reacting.
-*   `adb logcat` to stream and capture system logs when a test step fails so we can attach them to Jira.
-*   `adb push/pull` to move build files or download test evidence from the device storage."
+**[Your Response]:**
+"I orchestrate device states programmatically within our automation layers using these critical commands:
+*   `adb devices` to assert endpoint runtime readiness.
+*   `adb shell am start` and `am force-stop` to programmatically open or reset target application packages.
+*   `adb shell input tap/text/keyevent` to simulate user physical interactions if dynamic element bindings are unresponsive.
+*   `adb logcat` to stream runtime diagnostic logs when an assertion fails to attach context to bug tracking systems.
+*   `adb push/pull` to transfer binary configurations or download execution screenshots from local phone filesystems."
 
-### <a id="q9-handling-dynamic-ui-loading-without-hardcoded-sleeps"></a>Q9: Handling Dynamic UI Loading Without Hardcoded Sleeps
-**Interviewer:** *"How do you handle dynamic UI elements or elements that take time to load on Android devices?"*
+### <a id="m5-handling-dynamic-ui-elements-without-hardcoded-sleeps"></a>M5: Handling Dynamic UI Elements Without Hardcoded Sleeps
+**[Interviewer]:** *"How do you handle dynamic UI elements or elements that take time to load on Android devices?"*
 
-**Your Response:**
-"I strictly avoid hardcoded sleep timers (`Sleep 5s`) because they cause flaky tests and waste execution time. Instead, I always use Explicit Waits. In Java/UIAutomator, I use `device.wait(Until.hasObject(...), timeout)`. In Robot Framework, I use keywords like `Wait Until Element Is Visible` or `Wait Until Page Contains Element` with a reasonable timeout. This ensures the script moves to the next step the exact millisecond the element appears, optimizing execution speed."
+**[Your Response]:**
+"I have a strict rule against using static wait times (`Sleep 5s`) because they add major lag and cause flakiness. Instead, I always implement Explicit Waits. In Java/UIAutomator, I handle this via `device.wait(Until.hasObject(...), timeout)`. In Robot Framework, I consistently leverage keywords such as `Wait Until Element Is Visible` or `Wait Until Page Contains Element` bound to an explicit timeout. This configuration guarantees the pipeline progresses the exact millisecond the resource loads."
 
-### <a id="q10-debugging-local-pass vs-jenkins-cicd-failures"></a>Q10: Debugging Local Pass vs. Jenkins CI/CD Failures
-**Interviewer:** *"What is your approach when a test script passes on your local machine but fails randomly when running on the Jenkins node?"*
+### <a id="m6-troubleshooting-local-pass-vs-jenkins-cicd-failures"></a>M6: Troubleshooting Local Pass vs. Jenkins CI/CD Failures
+**[Interviewer]:** *"What is your approach when a test script passes on your local machine but fails randomly when running on the Jenkins node?"*
 
-**Your Response:**
-"This is usually a synchronization or environment issue. My troubleshooting steps are:
-1.  **Check the logs and screenshots:** I look at the Jenkins execution report and the screenshot captured at the exact moment of failure to see if the UI loaded differently.
-2.  **Compare Environments:** I verify if the Jenkins slave node has the same configuration, resolution, screen orientation, network speed, and ADB version as my local machine.
-3.  **Inspect Resource Load:** Sometimes Jenkins nodes run tests concurrently, causing the device or the machine to slow down. If it's a timing issue, I increase the Explicit Wait timeout for that specific dynamic step."
+**[Your Response]:**
+"This symptom points to environment drift or scheduling resource competition. I isolate it through these steps:
+1.  **Analyze Artifact Reports:** I examine the specific Jenkins HTML logs and the failure screenshot to evaluate the exact structural layout rendering.
+2.  **Audit Runtime Environment Consistency:** I verify that the Jenkins slave node has identical display parameters, orientations, network throttling boundaries, and matching ADB driver binaries.
+3.  **Optimize Wait Tolerances:** If the shared Jenkins runner is heavily utilized, UI thread performance can drop, so I increase the explicit wait timeouts specifically for dynamic actions on the remote side."
 
-### <a id="q11-session-token-and-state-management-in-python-api-testing"></a>Q11: Session Token and State Management in Python API Testing
-**Interviewer:** *"When testing REST APIs with Python, how do you handle authentication tokens across multiple test steps?"*
+### <a id="m7-handling-authentication-tokens-in-python-api-testing"></a>M7: Handling Authentication Tokens in Python API Testing
+**[Interviewer]:** *"When testing REST APIs with Python, how do you handle authentication tokens across multiple test steps?"*
 
-**Your Response:**
-"I handle this by using Python's `requests.Session()` object. In my initial setup or login keyword, I send a POST request to the authentication endpoint, extract the bearer token from the JSON response, and inject it into the session's default headers (`session.headers.update({'Authorization': f'Bearer {token}'})`). By utilizing this session object for all subsequent API requests, the token is automatically managed and passed along, keeping the test script clean and realistic."
+**[Your Response]:**
+"I manage state cleanly across my automation components by relying on Python's `requests.Session()` architecture. During the execution setup or authentication routine, the script fires a POST execution to the auth server, extracts the bearer token from the JSON payload, and appends it to the default headers using `session.headers.update({'Authorization': f'Bearer {token}'})`. Using this session object across all subsequent test cases automatically signs requests and minimizes boilerplate token management."
 
-### <a id="q12-scripted vs-declarative-jenkins-pipeline-approach"></a>Q12: Scripted vs. Declarative Jenkins Pipeline Approach
-**Interviewer:** *"What is the difference between a Scripted and a Declarative Jenkins Pipeline, and which one do you prefer for automation?"*
+### <a id="m8-scripted-vs-declarative-jenkins-pipeline-choice"></a>M8: Scripted vs. Declarative Jenkins Pipeline Choice
+**[Interviewer]:** *"What is the difference between a Scripted and a Declarative Jenkins Pipeline, and which one do you prefer for automation?"*
 
-**Your Response:**
-"I prefer the Declarative Pipeline approach. Declarative uses a strict, structured syntax wrapped in a `pipeline {}` block. It is easier to read, has built-in error handling sections (`post { always/failure }`), and is standard for most modern DevOps workflows. Scripted uses an older, looser syntax based on Groovy code loops. While it offers maximum flexibility, it is harder to maintain. For automation testing pipelines, Declarative gives us exactly what we need: clear stages (Pull, Build, Test, Report) and high readability."
+**[Your Response]:**
+"I prefer using Declarative Pipelines. Declarative pipelines follow a strict structural template enclosed in a `pipeline {}` block, offering excellent readability and built-in error interception sections via `post {}` states. Scripted pipelines use a looser syntax based on pure Groovy logic, which can become complicated and hard to maintain. For automation engineering, Declarative gives exactly what we need: clean execution phases (Pull, Compile, Run, Report) that are highly scannable."
 
-### <a id="q13-risk-based-regression-execution-under-tight-timelines"></a>Q13: Risk-Based Regression Execution Under Tight Timelines
-**Interviewer:** *"How do you perform Regression Testing when a minor bug fix is delivered, and the execution time is very limited?"*
+### <a id="m9-regression-testing-under-extreme-timeline-constraints"></a>M9: Regression Testing Under Extreme Timeline Constraints
+**[Interviewer]:** *"How do you perform Regression Testing when a minor bug fix is delivered, and the execution time is very limited?"*
 
-**Your Response:**
-"I use Impact Analysis. Instead of running the entire regression test suite blindly, I discuss with the developer to understand which code files or components were modified. I then select and execute the test cases directly related to that component, along with its immediate upstream and downstream dependencies. Finally, I run a quick automated Smoke Test suite to ensure the core application remains stable before certifying the release."
+**[Your Response]:**
+"I perform Impact Analysis instead of blindly running everything. I check with the development team to isolate the exact source files and modules that were changed. From there, I pull a specific subset of test cases covering those exact features, along with any highly dependent upstream and downstream systems. I finish by running our automated Smoke Test suite to ensure basic core sanity across the system before releasing."
 
-### <a id="q14-resolving-reopened-bugs-and-new-defect-spinoffs"></a>Q14: Resolving Reopened Bugs and New Defect Spinoffs
-**Interviewer:** *"What do you do if a developer marks your bug as 'Fixed', but during retesting, you find the bug is still there, or it caused a new bug?"*
+### <a id="m10-reopening-existing-bugs-vs-creating-new-defect-spinoffs"></a>M10: Reopening Existing Bugs vs. Creating New Defect Spinoffs
+**[Interviewer]:** *"What do you do if a developer marks your bug as 'Fixed', but during retesting, you find the bug is still there, or it caused a new bug?"*
 
-**Your Response:**
-"If the original bug still exists, I do not create a new ticket. I Reopen the existing Jira ticket, attach fresh evidence (new logs/screenshots), and clearly state that the issue is still reproducible on the latest build version. However, if the original bug *is* fixed, but the change broke something completely unrelated, I Close the original ticket to acknowledge the developer's fix, and immediately create a new, separate bug ticket for the new issue, linking it back to the original task for clear traceability."
+**[Your Response]:**
+"If the original error behavior is still reproducible, I do not create a new issue. I Reopen the original Jira ticket, attach new execution logs and screenshots, and log a comment showing that the fix failed on the latest build. However, if the original defect is fully resolved but the code change broke a separate, unrelated feature, I Close the original task to confirm that specific fix and open a brand-new bug ticket for the new regression, adding a link between both tickets for clear traceability."
 
 ---
 
-## <a id="part-4-core-quality-assurance--test-automation-fundamentals"></a>PART 4: CORE QUALITY ASSURANCE & TEST AUTOMATION FUNDAMENTALS
+## PART 4: 30 CORE QUALITY ASSURANCE QUESTIONS & SMART ANSWERS
 
-### <a id="q15-sdlc-vs-stlc-core-workflows"></a>Q15: SDLC vs. STLC Core Workflows
-**Interviewer:** *"Differentiate between SDLC and STLC."*
+### <a id="core-1-what-is-the-difference-between-sdlc-and-stlc"></a>CORE 1: Difference Between SDLC and STLC
+**[Answer]:** "SDLC stands for Software Development Life Cycle, which covers the entire end-to-end process of planning, designing, building, testing, and deploying software. STLC stands for Software Testing Life Cycle, which is a specific phase that runs parallel inside the SDLC. STLC focuses purely on testing activities like requirement analysis, test planning, test design, test execution, and test closure to detect defects as early as possible."
 
-**Your Response:**
-"SDLC (Software Development Life Cycle) refers to the entire process of planning, designing, building, testing, and deploying software. STLC (Software Testing Life Cycle) is a subset of SDLC that focuses purely on testing activities, such as test planning, design, execution, and closure. STLC runs parallel to SDLC to catch defects as early as possible."
+### <a id="core-2-differentiate-between-verification-and-validation"></a>CORE 2: Verification vs. Validation
+**[Answer]:** "Verification answers the question: 'Are we building the product right?'. It is a static testing approach that evaluates documents, requirements, and code architecture without executing the application. Validation answers the question: 'Are we building the right product?'. It is a dynamic testing approach where we execute the actual software to ensure it behaves according to user expectations."
 
-### <a id="q16-verification-vs-validation-definitions"></a>Q16: Verification vs. Validation Definitions
-**Interviewer:** *"What is the difference between Verification and Validation?"*
+### <a id="core-3-what-are-the-standard-fields-in-a-high-quality-test-case"></a>CORE 3: Standard Fields in a High-Quality Test Case
+**[Answer]:** "A standard test case must include: Test Case ID, Title, Pre-conditions, Test Steps, Test Data, Expected Result, Actual Result, and Status (Pass/Fail/Blocked). To ensure maximum traceability, we also add fields like Priority, Severity, Module Name, Author, and Post-conditions."
 
-**Your Response:**
-"Verification asks: 'Are we building the product right?' It is a static testing process that checks documents, designs, and code reviews without executing the code. Validation asks: 'Are we building the right product?' It is a dynamic testing process where we execute the actual software to ensure it meets user requirements."
+### <a id="core-4-can-you-distinguish-between-smoke-sanity-and-regression-testing"></a>CORE 4: Smoke, Sanity, and Regression Testing Distinctions
+**[Answer]:** "Smoke testing is performed on initial builds to verify that the critical, core functionalities work and the build is stable enough for deeper testing; it is broad and shallow. Sanity testing is a quick, focused evaluation performed after a specific bug fix or minor change to ensure that component works; it is narrow and deep. Regression testing is comprehensive testing executed after any code change to guarantee that new modifications have not broken existing, stable functionalities."
 
-### <a id="q17-mandatory-fields-for-professional-test-cases"></a>Q17: Mandatory Fields for Professional Test Cases
-**Interviewer:** *"What are the standard fields in a Test Case?"*
+### <a id="core-5-what-is-the-difference-between-severity-and-priority-give-examples-of-both-extremes"></a>CORE 5: Severity vs. Priority with Extreme Examples
+**[Answer]:** "Severity indicates the technical impact of a defect on the system's functionality, while Priority defines the business urgency of fixing that defect. A High Severity / Low Priority example is a complete application crash that only occurs when a user inputs 10,000 characters into an optional field; it is a fatal bug but highly unlikely to happen. A Low Severity / High Priority example is a misspelled company logo on the homepage; it does not break any system logic, but it severely damages corporate branding and must be fixed immediately."
 
-**Your Response:**
-"A standard test case includes: Test Case ID, Title, Pre-conditions, Test Steps, Test Data, Expected Result, Actual Result, and Status (Pass/Fail/Blocked). Depending on the project, we can also add Priority, Severity, Module, and Post-conditions."
+### <a id="core-6-what-are-the-core-states-in-a-standard-bug-life-cycle"></a>CORE 6: Core States in a Standard Bug Life Cycle
+**[Answer]:** "The lifecycle begins at 'New' when a bug is found. It transitions to 'Assigned' to a developer, then 'Open' during active investigation. Once fixed, the status becomes 'Fixed'. The QA engineer then moves it to 'Retest'. If the fix passes, it is marked as 'Verified' and finally 'Closed'. If the fix fails, it is 'Reopened'. Secondary states include 'Deferred', 'Rejected', and 'Cannot Reproduce'."
 
-### <a id="q18-core-distinctions-smoke-sanity-and-regression-testing"></a>Q18: Core Distinctions: Smoke, Sanity, and Regression Testing
-**Interviewer:** *"Differentiate between Smoke, Sanity, and Regression Testing."*
+### <a id="core-7-contrast-black-box-white-box-and-gray-box-testing"></a>CORE 7: Black-box, White-box, and Gray-box Testing
+**[Answer]:** "Black-box testing focuses entirely on software inputs and outputs based on requirements, with zero knowledge of the internal code structure. White-box testing examines the internal code logic, branches, loops, and statements, usually performed by developers via unit tests. Gray-box testing is a combination of both, where the tester has partial access to internal structures, such as databases or system architecture."
 
-**Your Response:**
-"Smoke Testing is performed on initial builds to verify if the critical functionalities work. It is broad and shallow. Sanity Testing is done on stable builds to verify a specific new feature or bug fix. It is narrow and deep. Regression Testing is performed to ensure that new code changes or bug fixes have not negatively impacted existing functionalities."
+### <a id="core-8-explain-functional-vs-non-functional-testing-with-examples"></a>CORE 8: Functional vs. Non-functional Testing with Examples
+**[Answer]:** "Functional testing validates what the system does. Examples include checking the user login flow, verifying payment gateway integrations, and processing search queries. Non-functional testing validates how well the system operates. Examples include Performance testing under high traffic, Security penetration testing, and UI Usability testing."
 
-### <a id="q19-technical-severity-vs-business-priority-matrix"></a>Q19: Technical Severity vs. Business Priority Matrix
-**Interviewer:** *"What is the difference between Severity and Priority? Give examples."*
+### <a id="core-9-what-critical-information-must-a-good-bug-report-contain"></a>CORE 9: Essential Components of a Great Bug Report
+**[Answer]:** "A great bug report must be clear and actionable. It requires a concise Title, detailed Steps to Reproduce, the Expected vs. Actual results, complete Environment details (OS, Browser version, hardware specs), Severity and Priority levels, and concrete evidence such as screenshots, screen recordings, or ADB/crash logs."
 
-**Your Response:**
-"Severity reflects the technical impact of a bug on the application's functionality. Priority reflects the business urgency of fixing that bug.
-*   *High Severity – Low Priority:* The app crashes when a user inputs 10,000 characters into the Name field. It is a technical failure, but highly unlikely to happen in reality.
-*   *Low Severity – High Priority:* The company logo is misspelled or broken on the homepage. It doesn't break any system logic, but it severely damages the brand image."
+### <a id="core-10-what-is-the-difference-between-a-test-plan-and-a-test-strategy"></a>CORE 10: Test Plan vs. Test Strategy Documents
+**[Answer]:** "A Test Strategy is a static, high-level document defined at the organizational or program level that dictates the overall testing philosophy and guidelines. A Test Plan is a dynamic, project-level document derived from the Test Strategy that describes the specific scope, schedule, target resources, risks, and deliverables for a particular release."
 
-### <a id="q20-comprehensive-defect-lifecycle-states"></a>Q20: Comprehensive Defect Lifecycle States
-**Interviewer:** *"What are the stages in a Bug Life Cycle?"*
+### <a id="core-11-an-input-field-accepts-age-from-18-to-60-how-do-you-apply-bva-and-ep"></a>CORE 11: Applying BVA and EP on Age Field (18-60)
+**[Answer]:** "Using Boundary Value Analysis (BVA), I will test the exact boundary values: 17 (invalid low), 18 (valid low boundary), 19 (valid), 59 (valid), 60 (valid high boundary), and 61 (invalid high). Using Equivalence Partitioning (EP), I split inputs into distinct classes: Valid range (18 to 60), Invalid Low (<18), Invalid High (>60), and Invalid Formats such as alphabetic characters, symbols, negative values, and empty inputs."
 
-**Your Response:**
-"The core workflow is: New → Assigned → Open → Fixed → Retest → Verified → Closed (or Reopened if the fix fails). Other states include Deferred (postponed), Rejected (not a bug), Duplicate, and Cannot Reproduce."
+### <a id="core-12-what-are-the-essential-test-cases-for-a-user-login-feature"></a>CORE 12: Essential Test Cases for a User Login Feature
+**[Answer]:** "Beyond basic valid/invalid credentials, I must test: SQL Injection and XSS security vulnerability payloads, Brute Force protection (ensuring account lockout after N failed attempts), case-sensitivity of passwords, Remember Me cookies, Session Timeout duration, concurrent logins from multiple devices, Social Media OAuth logins, Forgot Password workflows, and UI responsiveness."
 
-### <a id="q21-black-box-white-box-and-gray-box-testing-methodologies"></a>Q21: Black-box, White-box, and Gray-box Testing Methodologies
-**Interviewer:** *"Differentiate between Black-box, White-box, and Gray-box testing."*
+### <a id="core-13-if-a-developer-claims-they-cannot-reproduce-your-bug-how-do-you-handle-it"></a>CORE 13: Handling 'Cannot Reproduce' Feedback Professionally
+**[Answer]:** "I will remain collaborative. First, I will review my bug report to verify that the test steps, environment variables, and specific test data are completely clear. If the developer still faces issues, I will share execution recordings or system logs. If necessary, I will jump on a quick call to debug the issue together on their local environment. If it is an isolated environmental issue, I will document those specific conditions."
 
-**Your Response:**
-"Black-box involves testing based entirely on requirements without knowing the internal code structure. White-box involves testing the internal logic, loops, and statements of the code (usually done by Developers via Unit Testing). Gray-box is a hybrid approach where the tester has partial knowledge of the internal architecture or database structure."
+### <a id="core-14-how-do-you-determine-when-it-is-time-to-stop-testing"></a>CORE 14: Determining When to Stop Testing (Exit Criteria)
+**[Answer]:** "Testing is an infinite process, so we stop when predefined Exit Criteria are fully satisfied. These criteria typically include: the complete execution of all high-priority test cases, target test coverage metrics achieved, the defect density dropping below an acceptable threshold, reaching the project timeline deadline, and getting formal risk acceptance from project stakeholders."
 
-### <a id="q22-functional-vs-non-functional-testing-targets"></a>Q22: Functional vs. Non-functional Testing Targets
-**Interviewer:** *"Functional vs Non-functional testing — Give 3 examples for each."*
+### <a id="core-15-describe-your-standard-bug-tracking-workflow-inside-jira"></a>CORE 15: Standard Bug Tracking Workflow Inside Jira
+**[Answer]:** "I log the defect on Jira with all required steps, environment logs, and evidence. I assign the correct Epic link, component tag, and set the Severity/Priority. The ticket is assigned to the development team. Once marked as 'Fixed', I pull the latest CI build, execute comprehensive manual or automated retests, attach the new verification evidence to the ticket, and formally mark the Jira issue as 'Closed'."
 
-**Your Response:**
-"Functional testing validates *what* the system does. Examples: Login functionality, Payment processing, Search filtering. Non-functional testing validates *how* the system performs. Examples: Performance (Load/Stress), Security, Usability, Compatibility."
+### <a id="core-16-what-do-you-test for-get-post-put-and-delete-api-methods-name-common-status-codes"></a>CORE 16: Verifying GET, POST, PUT, DELETE and HTTP Status Codes
+**[Answer]:** "For GET, I test data structure integrity and query/pagination parameters. For POST, I validate request payload constraints and verify duplicate prevention. For PUT, I verify partial/full object mutations and guarantee idempotency. For DELETE, I ensure resource destruction and proper handling of non-existent items. Common status codes include: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, and 500 Internal Server Error."
 
-### <a id="q23-anatomy-of-an-actionable-and-flawless-bug-report"></a>Q23: Anatomy of an Actionable and Flawless Bug Report
-**Interviewer:** *"What makes a good Bug Report?"*
+### <a id="core-17-what-are-the-focus-areas-in-responsive-web-testing-and-what-tools-do-you-use"></a>CORE 17: Focus Areas and Tools in Responsive Web Testing
+**[Answer]:** "I check layout consistency across responsive breakpoints (mobile, tablet, desktop), proper execution of touch events, orientation shifts, typography scaling, image rendering, and menu transformations. I utilize Chrome DevTools for initial layout validation, combined with cloud testing execution engines like BrowserStack and real mobile handsets."
 
-**Your Response:**
-"A high-quality bug report must contain: A concise Title, clear Steps to Reproduce, Expected vs. Actual Results, Environment details (OS, Browser version, Device), Severity/Priority, and Attachments like screenshots, video recordings, or ADB/server logs."
+### <a id="core-18-why-is-cross-browser-testing-required-and-how-do-you-pick-target-browsers"></a>CORE 18: Cross-Browser Testing and Browser Selection Criteria
+**[Answer]:** "It is necessary because different browsers utilize separate rendering engines, which can interpret CSS, HTML, and JS in slightly different ways. To avoid guessing, I select target browsers by analyzing real market share data via tools like Google Analytics or StatCounter tailored to our user base. Typically, we support the latest 2 versions of Chrome, Safari, Edge, and Firefox."
 
-### <a id="q24-organizational-test-strategy-vs-project-test-plan"></a>Q24: Organizational Test Strategy vs. Project Test Plan
-**Interviewer:** *"What is the difference between a Test Plan and a Test Strategy?"*
+### <a id="core-19-if-a-release-is-in-1-day-and-you-have-200-unexecuted-test-cases-what-is-your-approach"></a>CORE 19: Handling 200 Unexecuted Test Cases with a 1-Day Deadline
+**[Answer]:** "I will immediately adopt a Risk-Based Testing strategy. I will identify and execute only critical smoke tests, major end-to-end user transactions, and regression tests on modules directly impacted by recent code changes. I will immediately and transparently report the untested scope and associated risks to the Project Manager so the business can make an informed deployment decision."
 
-**Your Response:**
-"Test Strategy is a high-level, long-term document usually defined at the organizational level. It describes the overall testing approach and rarely changes. Test Plan is a project-level document that outlines the specific scope, schedule, resources, risks, and deliverables for a particular release. One Test Strategy can apply to multiple Test Plans."
+### <a id="core-20-design-key-test-cases-for-an-e-commerce-add-to-cart-functionality"></a>CORE 20: Test Cases for an E-commerce 'Add to Cart' Feature
+**[Answer]:** "I will validate: adding varying quantities (boundary limits, negative items, exceeding warehouse stock), adding out-of-stock items, guest checkout cart behavior, cart persistence after user logout and login, automatic price updates when applying promotional codes, real-time cart data synchronization across multiple open browser tabs, and system response time when handling massive cart volumes."
 
-### <a id="q25-boundary-value-analysis--equivalence-partitioning-test-design"></a>Q25: Boundary Value Analysis & Equivalence Partitioning Test Design
-**Interviewer:** *"Write test cases for an input field 'Age' accepting values from 18 to 60 using BVA and EP."*
+### <a id="core-21-you-receive a-build-at-5-pm-that-releases-at-9-am-tomorrow-how-do-you-spend-the-4-remaining-hours"></a>CORE 21: Allocating Testing Scope for 5 PM Build Releasing at 9 AM
+**[Answer]:** "I will first run a high-level Smoke Test suite to ensure the application doesn't crash immediately. Then, using Impact Analysis, I will isolate the specific modules affected by the latest code check-ins and run targeted regression tests. I will not attempt to rush through everything. Before leaving, I will send a concise status report highlighting what was tested, what was skipped, and the remaining risks."
 
-**Your Response:**
-"Boundary Value Analysis (BVA): I will test the exact boundaries: 17 (Invalid Low), 18 (Valid Low), 19 (Valid), 59 (Valid), 60 (Valid High), and 61 (Invalid High). Equivalence Partitioning (EP): I will group inputs into partitions: Valid range (18-60), Invalid low (<18), Invalid high (>60), and Invalid formats (alphabetic characters, symbols, decimals, negative numbers, and empty inputs)."
+### <a id="core-22-differentiate-retesting-vs-regression-testing-how-do-you-optimize-an-oversized-regression-suite"></a>CORE 22: Retesting vs. Regression Suite Scope Optimization
+**[Answer]:** "Retesting is a targeted action to verify that a specific reported defect has been fixed successfully. Regression testing checks if the new code changes introduced unintended side effects in unrelated areas. If the suite grows too large, I prioritize tests via Impact Analysis and Risk-Based selection, while actively moving stable, highly repetitive regression cases into our automated execution pipelines."
 
-### <a id="q26-exhaustive-security--functional-testing-for-login-features"></a>Q26: Exhaustive Security & Functional Testing for Login Features
-**Interviewer:** *"List key test cases for a Login feature."*
+### <a id="core-23-you-find-a-critical-defect-but-the-pm-wants-to-release-without-fixing-it-what-do-you-do"></a>CORE 23: Handling Critical Defects Releasing with PM Approval
+**[Answer]:** "As a QA professional, my role is to expose risks, not block business releases. I will professionally document the exact technical impact, potential user friction, and steps to replicate the bug directly in the Jira ticket or via an official email thread. This ensures a clear audit trail. Once the PM formally acknowledges and signs off on accepting the risk, I will assist in preparing for a hotfix patch post-release."
 
-**Your Response:**
-"Apart from valid/invalid credentials, I will test: SQL Injection and XSS vulnerabilities, Brute Force protection (account locking after N failed attempts), Remember Me functionality, case-sensitivity, Session Timeout, concurrent logins from multiple devices, Social Logins (Google/Facebook), and the Forgot Password flow."
+### <a id="core-24-how-many-test-cases-can-you-design-for-a-file-upload-component"></a>CORE 24: Comprehensive Test Scenarios for a File Upload Component
+**[Answer]:** "I would cover at least 15+ scenarios: Valid and invalid extensions, file size boundary checks (0KB, maximum allowed, oversized files), filenames with special characters or extreme lengths, corrupted files, security scanning using malware signatures (like Eicar files), spoofed MIME types, unexpected network disconnections during upload, multi-file concurrent uploads, and upload cancellation flows."
 
-### <a id="q27-handling-cannot-reproduce-feedback-professionally"></a>Q27: Handling "Cannot Reproduce" Feedback Professionally
-**Interviewer:** *"A Developer says: 'I cannot reproduce this bug.' What would you do?"*
+### <a id="core-25-list-comprehensive-test-cases-for-a-file-search-component"></a>CORE 25: Comprehensive Test Cases for a Website Search Box
+**[Answer]:** "I will test empty submissions, single-character lookups, maximum input lengths, trailing and leading whitespace stripping, injection payloads (SQLi, XSS), alphanumeric and special character inputs, localized language scripts with accents, copy-paste functionality, autocomplete suggestion timing, recent search caching, and performance under heavy database requests."
 
-**Your Response:**
-"First, I will double-check my bug report to ensure I provided the exact Test Data, Environment, and precise Steps. If it is still unreproducible, I will attach logs or a screen recording. If needed, I will schedule a quick call or sit down with the developer to debug it together on their machine. If it turns out to be an environment-specific issue that cannot be replicated, I will document it clearly before marking it as 'Cannot Reproduce'."
+### <a id="core-26-what-do-you-do-if-a-developer-rejects-your-bug-report-as-not-a-bug"></a>CORE 26: Handling Defect Rejections Marked as 'Not a Bug'
+**[Answer]:** "I will review the original requirements and user stories. If the specification clearly aligns with my bug report, I will reopen the Jira ticket, link the official documentation, or consult the Business Analyst for confirmation. If the specification is vague, I will organize a quick alignment call with the developer and BA to resolve the ambiguity and update our product documentation."
 
-### <a id="q28-determining-project-exit-criteria-programmatically"></a>Q28: Determining Project Exit Criteria Programmatically
-**Interviewer:** *"When do you stop testing? (Exit Criteria)"*
+### <a id="core-27-what-is-the-difference-between-a-test-scenario-and-a-test-case-when-do-you-choose-one-over-the-other"></a>CORE 27: Test Scenario vs. Test Case Allocation Strategies
+**[Answer]:** "A Test Scenario defines 'What to test' at a high level in a single sentence (e.g., Validate user checkout). A Test Case defines 'How to test' with detailed, step-by-step inputs and expected results. I use Test Scenarios in rapid Agile sprints where the team possesses high domain knowledge and speed is essential. I write detailed Test Cases for highly regulated industries (like automotive or finance) and when comprehensive audit trails are required."
 
-**Your Response:**
-"We stop testing when the Exit Criteria defined in the Test Plan are met. This includes: running out of planned time, achieving target test coverage, the bug discovery rate dropping below a certain threshold, all critical/major defects being resolved, and receiving formal approval from stakeholders."
+### <a id="core-28-how-do-you-approach-testing-a-feature-when-there-is-absolutely-no-documentation"></a>CORE 28: Testing a Feature with Absolute Zero Documentation
+**[Answer]:** "I will perform Exploratory Testing to understand the feature's structure while executing competitor analysis to identify industry standard workflows. Simultaneously, I will conduct short interviews with the developers and product owner to map out basic flows. I will then explicitly document my testing assumptions and criteria, sharing them with the team for formal alignment before execution."
 
-### <a id="q29-professional-defect-lifecycle-execution-inside-jira"></a>Q29: Professional Defect Lifecycle Execution Inside Jira
-**Interviewer:** *"Describe your bug reporting workflow on Jira."*
+### <a id="core-29-distinguish-between-performance-load-stress-and-spike-testing-what-metrics-are-vital"></a>CORE 29: Performance, Load, Stress, and Spike Testing Metrics
+**[Answer]:** "Performance testing monitors general system responsiveness under normal conditions. Load testing evaluates behavior under expected peak user volumes. Stress testing pushes the system past its structural limits to discover the breaking point. Spike testing measures stability during sudden, extreme traffic surges and sharp drops. Vital metrics include Throughput (req/s), Error Rates, hardware metrics (CPU/RAM), and 95th or 99th percentile Response Times, which are far more accurate than simple averages."
 
-**Your Response:**
-"I create a Jira bug ticket with a clear description, steps, and logs. I assign the proper Epic/User Story link, Component, and Severity/Priority. I then assign it to the developer or QA lead. Once the developer marks it as 'Fixed', I pull the latest build, retest it, attach new evidence, and either close the ticket or reopen it if the bug persists."
-
-### <a id="q30-core-verifications for-http-rest-api-architecture"></a>Q30: Core Verifications for HTTP REST API Architecture
-**Interviewer:** *"For API testing, what do you test for GET, POST, PUT, DELETE? Name common HTTP status codes."*
-
-**Your Response:**
-"GET: Check data response accuracy, query parameters, and pagination. POST: Validate payload body constraints and handle duplicate creations. PUT/PATCH: Verify full/partial updates and ensure idempotency. DELETE: Verify successful deletion and response when deleting non-existent items. Status Codes: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 500 Internal Server Error."
-
-### <a id="q31-responsive-web-testing-strategies-and-execution-tools"></a>Q31: Responsive Web Testing Strategies and Execution Tools
-**Interviewer:** *"What do you check in Responsive Web Testing? What tools do you use?"*
-
-**Your Response:**
-"I test layout stability across breakpoints (mobile, tablet, desktop), touch targets, screen orientations (portrait/landscape), text truncation, image scaling, and sticky headers. Tools I use include Chrome DevTools Responsive Mode, real devices, or cloud platforms like BrowserStack."
-
-### <a id="q32-analytical-selection-criteria-for-cross-browser-testing"></a>Q32: Analytical Selection Criteria for Cross-Browser Testing
-**Interviewer:** *"Why do we need Cross-Browser testing? How do you choose which browsers to test?"*
-
-**Your Response:**
-"We need it because different browsers use different rendering engines (like Blink, WebKit, Gecko), which can cause UI or JavaScript discrepancies. To select browsers, I rely on Google Analytics or market share data (like StatCounter) specific to our target audience, rather than guessing. Usually, we cover the latest 2 versions of Chrome, Safari iOS, Edge, and Firefox."
-
-### <a id="q33-risk-based-prioritization-when-faced-with-extreme-deadlines"></a>Q33: Risk-Based Prioritization When Faced With Extreme Deadlines
-**Interviewer:** *"Scenario: Deadline is in 1 day, and 200 test cases are left unexecuted. What do you do?"*
-
-**Your Response:**
-"I will instantly pivot to a Risk-Based Testing approach. I will focus strictly on smoke tests, critical end-to-end user flows, and high-risk modules impacted by recent changes. Simultaneously, I will transparently report the exact scope and risks to the PM or QA Lead, allowing stakeholders to make an informed decision on whether to proceed or delay the release."
-
-### <a id="q34-comprehensive-integration-testing-for-e-commerce-carts"></a>Q34: Comprehensive Integration Testing for E-commerce Carts
-**Interviewer:** *"Design test cases for an E-commerce 'Add to Cart' feature."*
-
-**Your Response:**
-"I will cover: Item quantity limits (zero, negative, maximum stock, decimal values), adding out-of-stock items, unauthenticated users (guest cart), cart persistence after logout, multi-tab synchronization, total price calculation when applying vouchers, and application performance when handling a large volume of items (100+)."
-
-### <a id="q35-formulating-a-4-hour-emergency-automation-execution-plan"></a>Q35: Formulating a 4-Hour Emergency Automation Execution Plan
-**Interviewer:** *"You receive a new build at 5 PM, and the release is at 9 AM tomorrow. What will you test in the remaining 4 hours?"*
-
-**Your Response:**
-"I will first run a quick Smoke Test to ensure the build isn't completely broken. Then, I will perform targeted regression testing specifically on the modules impacted by the latest code changes (using Impact Analysis). I will not rush to cover everything blindly; instead, I will document exactly what was tested and what remains untested, providing a clear risk assessment for tomorrow's release."
-
-### <a id="q36-retesting-vs-regression-suite-scope-optimization"></a>Q36: Retesting vs. Regression Suite Scope Optimization
-**Interviewer:** *"Differentiate between Retesting and Regression Testing. How do you select cases when the regression suite is too large?"*
-
-**Your Response:**
-"Retesting is targeted and manual; it specifically verifies if a previously reported bug is fixed. Regression Testing checks if the fix caused side effects in unrelated areas. When the suite is too large, I use Impact Analysis to identify affected modules, prioritize critical business flows (Risk-based selection), and leverage Automation for stable features while focusing manual testing on highly dynamic areas."
-
-### <a id="q37-managing-technical-risk-disagreements-with-product-managers"></a>Q37: Managing Technical Risk Disagreements with Product Managers
-**Interviewer:** *"You find a critical bug, but the PM says: 'Don't fix it, release anyway.' What do you do?"*
-
-**Your Response:**
-"I will remain professional and avoid heated arguments. My job as QA is to expose risk, not make the final business decision. I will clearly document the technical and user impact of the bug on Jira or via email, ensuring the risk is formally acknowledged. Once the PM explicitly signs off on accepting the risk, I will update the release notes accordingly to maintain an audit trail."
-
-### <a id="q38-boundary-and-security-test-matrix-for-file-upload-forms"></a>Q38: Boundary and Security Test Matrix for File Upload Forms
-**Interviewer:** *"How many test cases can you think of for a File Upload form?"*
-
-**Your Response:**
-"I can think of multiple scenarios: Valid/invalid extensions, file size limits (boundary testing for empty, exact maximum, and oversized files), files with special characters or extremely long names, corrupted files, uploading malware/viruses (using Eicar test files), spoofed MIME types (e.g., changing a `.exe` extension to `.jpg`), handling network interruptions mid-upload, and parallel uploads."
-
-### <a id="q39-comprehensive-validation-vectors-for-system-search-inputs"></a>Q39: Comprehensive Validation Vectors for System Search Inputs
-**Interviewer:** *"Test case for an engine search box on a website."*
-
-**Your Response:**
-"I will check: Empty searches, single-character inputs, maximum character limits, security inputs (SQL injection, XSS payloads), trailing/leading spaces, special character handling, search behaviors for localized languages (with/without accents), copy-paste support, autocomplete dropdown accuracy, recent search history, and search speed under heavy database loads."
-
-### <a id="q40-strategic-mitigation-of-not-a-bug-rejections"></a>Q40: Strategic Mitigation of "Not a Bug" Rejections
-**Interviewer:** *"The bug you reported is rejected by the developer as 'Not a bug'. What do you do?"*
-
-**Your Response:**
-"I will re-verify the product specifications or requirements document. If the spec supports my case, I will reopen the ticket, linking it to the official requirement or consulting the Business Analyst (BA) for confirmation. If the specification is ambiguous, I will schedule a quick align call with both the Dev and BA to clarify the expected behavior and update the documentation."
-
-### <a id="q41-test-scenario-vs-test-case-allocation-strategies"></a>Q41: Test Scenario vs. Test Case Allocation Strategies
-**Interviewer:** *"What is the difference between a Test Scenario and a Test Case? When do you write Scenarios instead of detailed Test Cases?"*
-
-**Your Response:**
-"Test Scenario is high-level, answering *'What to test'* (e.g., Verify user can successfully checkout). Test Case is low-level, answering *'How to test'* with exact steps and expected results. I write Scenarios in fast-paced Agile projects where requirements change rapidly, and the QA team has strong domain expertise. I write Detailed Test Cases for heavily regulated projects (like banking or healthcare), outsourced testing, or when working with junior testers who need clear guidance."
-
-### <a id="q42-executing-exploratory-testing-without-feature-specifications"></a>Q42: Executing Exploratory Testing Without Feature Specifications
-**Interviewer:** *"How do you test a feature when there are no requirement documents or specifications?"*
-
-**Your Response:**
-"I will utilize Exploratory Testing combined with a review of competitor products to understand standard user experiences. I will also interview the BA, PM, and Developers to capture implicit requirements. Finally, I will document my own assumptions and share them with the team for sign-off before beginning formal test execution."
-
-### <a id="q43-advanced-performance-engineering-load-stress-and-spike"></a>Q43: Advanced Performance Engineering: Load, Stress, and Spike
-**Interviewer:** *"Differentiate between Performance, Load, Stress, and Spike Testing. What tools and metrics do you focus on?"*
-
-**Your Response:**
-"Performance measures speed and stability under normal conditions. Load evaluates system behavior under expected peak user traffic. Stress pushes the system beyond its limits to find the breaking point. Spike tests stability when traffic suddenly surges and drops. Tools: JMeter, K6. Key Metrics: 95th/99th percentile response times (which are more reliable than averages), Throughput (Requests per second), Error Rate, and hardware resource utilization (CPU, RAM, DB connection pools)."
-
-### <a id="<a id="q44-ethical-protocols-for-processing-high-severity-security-leaks"></a>Q44: Ethical Protocols for Processing High-Severity Security Leaks
-**Interviewer:** *"You discover a major security flaw (e.g., seeing another user's private data). How do you handle it?"*
-
-**Your Response:**
-"This is a sensitive issue, so I will prioritize data ethics. I will never take screenshots of actual production PII (Personally Identifiable Information) and will not post details on public Slack/Teams channels. Instead, I will replicate the issue using dummy test accounts, document it discreetly, mark the Jira ticket as confidential, and directly notify the Security Lead or Project Manager."
+### <a id="core-30-you-discover-a-severe-security-flaw-that-exposes-user-data-how-do-you-handle-it"></a>CORE 30: Processing Severe Security Flaws and Data Exposure
+**[Answer]:** "This is a critical security vulnerability. I will act ethically and discreetly. I will never capture screenshots containing real production PII (Personally Identifiable Information), and I will never discuss the issue on open or public communication channels. I will replicate the flaw using dummy test accounts, document the issue inside a confidential Jira ticket, and directly alert the Security Lead and Project Manager immediately."
