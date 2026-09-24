@@ -116,11 +116,14 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"How do you structure your Robot Framework project to ensure it is clean and maintainable?"*
 
 **[Your Response]:**
-"I follow a multi-layered structure to separate test logic from implementation details:
-* **Tests Layer:** Contains `.robot` files with high-level test cases written in a clear, behavior-driven format (Gherkin style).
-* **Keywords/Resources Layer:** Contains `.resource` files where I group reusable user keywords.
-* **Libraries Layer:** Contains custom Python classes (`.py`) where I write low-level automation logic (like device control or custom API calls) that Robot Framework's native libraries don't support out of the box.
-* **Data Layer:** Contains environment configurations, endpoints, variables, or localization files."
+"I split the project into layers so test logic stays separate from implementation details:
+* **Tests layer:** `.robot` files with high-level test cases written in Gherkin style.
+* **Keywords/Resources layer:** `.resource` files with reusable keywords.
+* **Libraries layer:** custom Python classes (`.py`) with low-level logic (device control, API calls) that Robot Framework cannot do by itself.
+* **Data layer:** environment configs, endpoints, variables, and localization files.
+
+* **Ví dụ:** `tests/login.robot` chỉ gọi keyword; `resources/login.resource` chứa keyword dùng lại; `libraries/adb_lib.py` chứa code ADB; `data/staging.yaml` chứa URL và tài khoản.
+* **🧠 Nhớ nhanh:** Tests = *cái gì*; Resources = *dùng lại*; Libraries = *việc nặng*; Data = *dữ liệu*.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -128,7 +131,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"How do you handle exceptions or errors inside your custom Python libraries so that Robot Framework catches them correctly?"*
 
 **[Your Response]:**
-"Inside my Python library code, I wrap risky operations in standard `try-except` blocks to handle unexpected system disruptions gracefully. If an error is fatal and should break the execution flow, I explicitly raise an exception—either a standard Python `RuntimeError` or a customized domain exception. Robot Framework automatically catches any unhandled exception raised by an underlying Python library, mapping it natively to mark that specific test keyword step as 'FAILED' with the exact exception message preserved in the execution log logs."
+"In my Python library I wrap risky code in `try-except` to handle small problems quietly. If the error is serious and must stop the test, I raise an exception — a normal Python `RuntimeError` or my own custom exception. Robot Framework catches it automatically, marks that keyword step as 'FAILED', and keeps the exact error message in the log.
+
+* **Ví dụ:** mất kết nối ADB → `raise RuntimeError('Device offline')` → step hiện FAILED, log ghi rõ 'Device offline'.
+* **🧠 Nhớ nhanh:** Lỗi nhỏ → bắt và xử lý; lỗi nghiêm trọng → `raise` để Robot Framework đánh FAILED.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -136,7 +142,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"How do you implement Data-Driven Testing in Robot Framework? For example, testing the same flow with multiple inputs."*
 
 **[Your Response]:**
-"I achieve this cleanly by utilizing the native `Test Template` feature in Robot Framework. I define a standardized core keyword workflow that represents the functional path (for example, `Login With Credentials`), and then under the standard `Test Cases` header, I structure the rows representing data configurations and corresponding expected outcomes. This enables me to iterate the exact same logic repeatedly across distinct input variations (such as valid, invalid, or edge-case string boundaries) without any copy-pasting, preserving clean and DRY code."
+"I use the built-in `Test Template` feature. I write one keyword that does the whole flow, for example `Login With Credentials`, and then under the `Test Cases` header I only list data rows (username, password, expected result). The same logic runs again for every row, so there is no copy-paste.
+
+* **Ví dụ:** `valid/valid → Success`; `valid/wrong → 'Invalid password'`; `locked user → 'Account locked'`.
+* **🧠 Nhớ nhanh:** 1 keyword + nhiều dòng dữ liệu = `Test Template`.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -144,12 +153,15 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"Since you work a lot with Android automation, what are the most common ADB commands you use in your automation scripts?"*
 
 **[Your Response]:**
-"I orchestrate device states programmatically within our automation layers using these critical commands:
-* `adb devices` to assert endpoint runtime readiness.
-* `adb shell am start` and `am force-stop` to programmatically open or reset target application packages.
-* `adb shell input tap/text/keyevent` to simulate user physical interactions if dynamic element bindings are unresponsive.
-* `adb logcat` to stream runtime diagnostic logs when an assertion fails to attach context to bug tracking systems.
-* `adb push/pull` to transfer binary configurations or download execution screenshots from local phone filesystems."
+"These are the commands I use most in automation:
+* `adb devices` — check the device is connected and ready.
+* `adb shell am start` / `am force-stop` — open or reset the app package.
+* `adb shell input tap / text / keyevent` — simulate touches and typing when normal element locators fail.
+* `adb logcat` — pull logs when a test fails, to attach evidence to the bug ticket.
+* `adb push / pull` — copy config files into the phone or download screenshots out of it.
+
+* **Ví dụ:** test treo ở màn hình loading → `adb logcat` để xem app báo lỗi gì trước khi log bug.
+* **🧠 Nhớ nhanh:** Xem máy – Mở/tắt app – Chạm/gõ – Xem log – Copy file.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -157,7 +169,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"How do you handle dynamic UI elements or elements that take time to load on Android devices?"*
 
 **[Your Response]:**
-"I have a strict rule against using static wait times (`Sleep 5s`) because they add major lag and cause flakiness. Instead, I always implement Explicit Waits. In Java/UIAutomator, I handle this via `device.wait(Until.hasObject(...), timeout)`. In Robot Framework, I consistently leverage keywords such as `Wait Until Element Is Visible` or `Wait Until Page Contains Element` bound to an explicit timeout. This configuration guarantees the pipeline progresses the exact millisecond the resource loads."
+"My rule is: no hard-coded sleeps like `Sleep 5s`, because they waste time and make tests flaky. I always use explicit waits. In Java/UIAutomator: `device.wait(Until.hasObject(...), timeout)`. In Robot Framework: `Wait Until Element Is Visible` or `Wait Until Page Contains Element` with a timeout. The test moves on the moment the element appears.
+
+* **Ví dụ:** nút Login cần 2s để hiện → set timeout 10s → test đi tiếp sau 2s, không chờ đủ 10s.
+* **🧠 Nhớ nhanh:** Không `Sleep` cứng — chỉ `Wait` có điều kiện.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -165,10 +180,13 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"What is your approach when a test script passes on your local machine but fails randomly when running on the Jenkins node?"*
 
 **[Your Response]:**
-"This symptom points to environment drift or scheduling resource competition. I isolate it through these steps:
-1.  **Analyze Artifact Reports:** I examine the specific Jenkins HTML logs and the failure screenshot to evaluate the exact structural layout rendering.
-2.  **Audit Runtime Environment Consistency:** I verify that the Jenkins slave node has identical display parameters, orientations, network throttling boundaries, and matching ADB driver binaries.
-3.  **Optimize Wait Tolerances:** If the shared Jenkins runner is heavily utilized, UI thread performance can drop, so I increase the explicit wait timeouts specifically for dynamic actions on the remote side."
+"Passing locally but failing on Jenkins usually means the environments are different. I check it in 3 steps:
+1.  **Read the evidence:** open the Jenkins log and the failure screenshot to see what actually happened.
+2.  **Compare environments:** screen size and rotation, network speed/limits, and ADB version or driver on the node.
+3.  **Adjust waits:** if the Jenkins machine is shared and slower, the UI reacts slower, so I increase explicit timeouts for dynamic steps.
+
+* **Ví dụ:** máy local màn hình 1080p, node Jenkins 720p → nút nằm ngoài màn hình → phải cuộn hoặc set cùng độ phân giải.
+* **🧠 Nhớ nhanh:** Xem log/screenshot → so sánh môi trường → tăng timeout nếu máy yếu hơn.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -176,7 +194,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"When testing REST APIs with Python, how do you handle authentication tokens across multiple test steps?"*
 
 **[Your Response]:**
-"I manage state cleanly across my automation components by relying on Python's `requests.Session()` architecture. During the execution setup or authentication routine, the script fires a POST execution to the auth server, extracts the bearer token from the JSON payload, and appends it to the default headers using `session.headers.update({'Authorization': f'Bearer {token}'})`. Using this session object across all subsequent test cases automatically signs requests and minimizes boilerplate token management."
+"I use `requests.Session()`. I log in once with a POST request, take the token from the JSON response, and put it into the session headers: `session.headers.update({'Authorization': f'Bearer {token}'})`. From then on, every request using that session already carries the token, so I never add it manually again.
+
+* **Ví dụ:** login → token `eyJhb...` → gán vào session → các request GET/POST sau không cần nhắc token.
+* **🧠 Nhớ nhanh:** Login 1 lần → lấy token → nhét vào `session.headers` → xài lại cho mọi request.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -184,7 +205,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"What is the difference between a Scripted and a Declarative Jenkins Pipeline, and which one do you prefer for automation?"*
 
 **[Your Response]:**
-"I prefer using Declarative Pipelines. Declarative pipelines follow a strict structural template enclosed in a `pipeline {}` block, offering excellent readability and built-in error interception sections via `post {}` states. Scripted pipelines use a looser syntax based on pure Groovy logic, which can become complicated and hard to maintain. For automation engineering, Declarative gives exactly what we need: clean execution phases (Pull, Compile, Run, Report) that are highly scannable."
+"I prefer Declarative pipelines. They must follow a fixed template inside a `pipeline {}` block, so they are easy to read and they have built-in `post {}` sections for success, failure, and cleanup. Scripted pipelines use free Groovy code: more flexible, but harder to read and maintain. For test automation, Declarative is enough and much clearer: Pull code → Compile → Run tests → Report.
+
+* **Ví dụ:** `post { failure { slackSend ... } }` tự gửi cảnh báo khi test fail, không cần viết `try/catch`.
+* **🧠 Nhớ nhanh:** Declarative = có khuôn, dễ đọc, có `post {}`; Scripted = Groovy tự do, khó bảo trì.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -192,7 +216,10 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"How do you perform Regression Testing when a minor bug fix is delivered, and the execution time is very limited?"*
 
 **[Your Response]:**
-"I perform Impact Analysis instead of blindly running everything. I check with the development team to isolate the exact source files and modules that were changed. From there, I pull a specific subset of test cases covering those exact features, along with any highly dependent upstream and downstream systems. I finish by running our automated Smoke Test suite to ensure basic core sanity across the system before releasing."
+"I do Impact Analysis instead of running everything. I ask the developer which files or modules were changed, then run only the test cases for those features plus the related upstream and downstream systems. I finish with the automated Smoke suite to confirm the system is still healthy.
+
+* **Ví dụ:** fix nút 'Forgot Password' → test lại flow quên mật khẩu + gửi email + đăng nhập, rồi chạy smoke.
+* **🧠 Nhớ nhanh:** Hỏi dev sửa gì → test đúng vùng đó + vùng liên quan → chạy smoke.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -200,7 +227,12 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 **[Interviewer]:** *"What do you do if a developer marks your bug as 'Fixed', but during retesting, you find the bug is still there, or it caused a new bug?"*
 
 **[Your Response]:**
-"If the original error behavior is still reproducible, I do not create a new issue. I Reopen the original Jira ticket, attach new execution logs and screenshots, and log a comment showing that the fix failed on the latest build. However, if the original defect is fully resolved but the code change broke a separate, unrelated feature, I Close the original task to confirm that specific fix and open a brand-new bug ticket for the new regression, adding a link between both tickets for clear traceability."
+"There are two different cases:
+1.  **The old bug is still there** → I do not create a new ticket. I Reopen the original Jira ticket with new logs and screenshots, and comment that the fix failed on this build.
+2.  **The old bug is fixed but the change broke another feature** → I Close the original ticket to confirm that fix, and open a new bug ticket for the new regression. I link the two tickets for traceability.
+
+* **Ví dụ:** bug login còn lỗi → Reopen; login hết lỗi nhưng nút Logout mới bị vỡ → ticket mới cho Logout + link với ticket cũ.
+* **🧠 Nhớ nhanh:** Lỗi cũ còn → Reopen; lỗi mới do sửa → ticket mới + link.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
@@ -208,152 +240,244 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ## PART 4: 30 CORE QUALITY ASSURANCE QUESTIONS & SMART ANSWERS
 
+> **Cách học:** mỗi câu chỉ cần nhớ 2 phần — câu trả lời tiếng Anh (nói khi phỏng vấn) và dòng **🧠 Nhớ nhanh** (từ khóa tiếng Việt để nhắc lại).
+
 ### <a id="core-1-difference-between-sdlc-and-stlc"></a>CORE 1: Difference Between SDLC and STLC
-**[Answer]:** "SDLC stands for Software Development Life Cycle, which covers the entire end-to-end process of planning, designing, building, testing, and deploying software. STLC stands for Software Testing Life Cycle, which is a specific phase that runs parallel inside the SDLC. STLC focuses purely on testing activities like requirement analysis, test planning, test design, test execution, and test closure to detect defects as early as possible."
+**[Answer]:** "SDLC is the whole life of the software: plan, design, code, test, release, and maintain. STLC is only the testing part inside SDLC: read requirements, plan tests, write tests, run tests, then close testing. Simply put, SDLC is the whole journey and STLC is one stop in that journey."
+
+* **Ví dụ:** SDLC giống xây cả căn nhà (từ bản vẽ đến bàn giao); STLC là bước kiểm tra chất lượng của căn nhà đó.
+* **🧠 Nhớ nhanh:** SDLC = cả vòng đời; STLC = vòng đời của testing, chạy song song bên trong SDLC.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-2-verification-vs-validation"></a>CORE 2: Verification vs. Validation
-**[Answer]:** "Verification answers the question: 'Are we building the product right?'. It is a static testing approach that evaluates documents, requirements, and code architecture without executing the application. Validation answers the question: 'Are we building the right product?'. It is a dynamic testing approach where we execute the actual software to ensure it behaves according to user expectations."
+**[Answer]:** "Verification asks: 'Are we building it right?' We check documents, requirements, and code without running the app — that is static testing. Validation asks: 'Are we building the right product?' We run the real software and use it like a user — that is dynamic testing."
+
+* **Ví dụ:** Verification = đọc bản thiết kế xem đúng chuẩn chưa (chưa chạy gì). Validation = lắp xong cho người dùng chạy thử.
+* **🧠 Nhớ nhanh:** Verification = *không chạy app*, chỉ đọc tài liệu; Validation = *phải chạy app* như người dùng thật.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-3-standard-fields-in-a-high-quality-test-case"></a>CORE 3: Standard Fields in a High-Quality Test Case
-**[Answer]:** "A standard test case must include: Test Case ID, Title, Pre-conditions, Test Steps, Test Data, Expected Result, Actual Result, and Status (Pass/Fail/Blocked). To ensure maximum traceability, we also add fields like Priority, Severity, Module Name, Author, and Post-conditions."
+**[Answer]:** "A good test case has these fields: Test Case ID, Title, Pre-condition, Test Steps, Test Data, Expected Result, Actual Result, and Status (Pass / Fail / Blocked). For full traceability we add Priority, Severity, Module, Author, and Post-condition."
+
+* **Ví dụ:** ID `TC-01` | Title `Login with valid account` | Pre-condition `user đã đăng ký` | Data `user1 / 123456` | Expected `vào trang Home` | Actual `vào trang Home` | Status `Pass`.
+* **🧠 Nhớ nhanh:** nhớ theo dòng chảy: **Chuẩn bị → Làm → Dữ liệu → Mong đợi → Thực tế → Kết luận** (Pass/Fail/Blocked).
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-4-smoke-sanity-and-regression-testing-distinctions"></a>CORE 4: Smoke, Sanity, and Regression Testing Distinctions
-**[Answer]:** "Smoke testing is performed on initial builds to verify that the critical, core functionalities work and the build is stable enough for deeper testing; it is broad and shallow. Sanity testing is a quick, focused evaluation performed after a specific bug fix or minor change to ensure that component works; it is narrow and deep. Regression testing is comprehensive testing executed after any code change to guarantee that new modifications have not broken existing, stable functionalities."
+**[Answer]:** "Smoke test runs on a new build to check the main features still work — it is broad but shallow. Sanity test runs after one small fix to check that area carefully — narrow but deep. Regression test runs after any code change to make sure the change did not break features that already worked."
+
+* **Ví dụ:** Smoke = mở app, thử đăng nhập / thanh toán / tìm kiếm xem còn chạy. Sanity = chỉ test lại nút 'Forgot Password' vừa sửa. Regression = chạy lại bộ test cũ sau khi sửa.
+* **🧠 Nhớ nhanh:** Smoke = build mới (rộng, nông); Sanity = sửa 1 chỗ (hẹp, sâu); Regression = sợ vỡ chỗ khác.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-5-severity-vs-priority-with-extreme-examples"></a>CORE 5: Severity vs. Priority with Extreme Examples
-**[Answer]:** "Severity indicates the technical impact of a defect on the system's functionality, while Priority defines the business urgency of fixing that defect. A High Severity / Low Priority example is a complete application crash that only occurs when a user inputs 10,000 characters into an optional field; it is a fatal bug but highly unlikely to happen. A Low Severity / High Priority example is a misspelled company logo on the homepage; it does not break any system logic, but it severely damages corporate branding and must be fixed immediately."
+**[Answer]:** "Severity is how badly the bug breaks the system (technical impact). Priority is how soon the business needs it fixed (urgency). High Severity + Low Priority: the app crashes only when you type 10,000 characters into an optional field — very bad but very rare. Low Severity + High Priority: a typo in the company logo on the homepage — nothing breaks, but the brand looks bad, so it must be fixed now."
+
+* **Ví dụ:** App crash khi nhập 10.000 ký tự = nặng nhưng hiếm → Severity cao, Priority thấp. Sai chính tả logo trang chủ = nhẹ nhưng ảnh hưởng thương hiệu → Severity thấp, Priority cao.
+* **🧠 Nhớ nhanh:** Severity = *hỏng nặng đến đâu*; Priority = *phải sửa gấp đến đâu*. Nặng chưa chắc gấp, gấp chưa chắc nặng.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-6-core-states-in-a-standard-bug-life-cycle"></a>CORE 6: Core States in a Standard Bug Life Cycle
-**[Answer]:** "The lifecycle begins at 'New' when a bug is found. It transitions to 'Assigned' to a developer, then 'Open' during active investigation. Once fixed, the status becomes 'Fixed'. The QA engineer then moves it to 'Retest'. If the fix passes, it is marked as 'Verified' and finally 'Closed'. If the fix fails, it is 'Reopened'. Secondary states include 'Deferred', 'Rejected', and 'Cannot Reproduce'."
+**[Answer]:** "A bug moves through these states: New (QA found it) → Assigned (given to a developer) → Open (the developer is working on it) → Fixed (developer says done) → Retest (QA checks again) → Verified (the fix works) → Closed (finished). If the fix fails, it goes back to Reopened. Other states are Deferred (fix later), Rejected (not accepted), and Cannot Reproduce."
+
+* **Ví dụ:** giống xử lý khiếu nại: tiếp nhận → chuyển bộ phận → xử lý → trả lời → khách kiểm tra lại → đóng.
+* **🧠 Nhớ nhanh:** **Mới → Giao → Mở → Sửa → Test lại → Xác nhận → Đóng**; fail thì Reopen.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-7-black-box-white-box-and-gray-box-testing"></a>CORE 7: Black-box, White-box, and Gray-box Testing
-**[Answer]:** "Black-box testing focuses entirely on software inputs and outputs based on requirements, with zero knowledge of the internal code structure. White-box testing examines the internal code logic, branches, loops, and statements, usually performed by developers via unit tests. Gray-box testing is a combination of both, where the tester has partial access to internal structures, such as databases or system architecture."
+**[Answer]:** "Black-box: I only compare inputs and outputs with the requirements, and I know nothing about the code inside. White-box: I look inside the code — branches, loops, statements — usually developers do this with unit tests. Gray-box: in between — I know some internals such as the database or the architecture, but I still test from the outside."
+
+* **Ví dụ:** Black-box = thử đồ hộp mà không biết công thức; White-box = biết rõ công thức từng bước; Gray-box = biết vài nguyên liệu chính nhưng không biết hết.
+* **🧠 Nhớ nhanh:** Đen = không thấy code; Trắng = thấy hết code; Xám = thấy một phần.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-8-functional-vs-non-functional-testing-with-examples"></a>CORE 8: Functional vs. Non-functional Testing with Examples
-**[Answer]:** "Functional testing validates what the system does. Examples include checking the user login flow, verifying payment gateway integrations, and processing search queries. Non-functional testing validates how well the system operates. Examples include Performance testing under high traffic, Security penetration testing, and UI Usability testing."
+**[Answer]:** "Functional testing checks WHAT the system does: does login work, does the payment go through, does search return results? Non-functional testing checks HOW WELL it does it: how fast (performance), how safe (security), and how easy to use (usability)."
+
+* **Ví dụ:** Functional = đăng nhập đúng tài khoản có vào được không? Non-functional = đăng nhập mất bao lâu, có chặn brute force không?
+* **🧠 Nhớ nhanh:** Functional = *LÀM ĐƯỢC GÌ*; Non-functional = *LÀM TỐT ĐẾN ĐÂU*.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-9-essential-components-of-a-great-bug-report"></a>CORE 9: Essential Components of a Great Bug Report
-**[Answer]:** "A great bug report must be clear and actionable. It requires a concise Title, detailed Steps to Reproduce, the Expected vs. Actual results, complete Environment details (OS, Browser version, hardware specs), Severity and Priority levels, and concrete evidence such as screenshots, screen recordings, or ADB/crash logs."
+**[Answer]:** "A good bug report must be clear and actionable. It needs: a short clear Title; Steps to Reproduce; Expected result vs Actual result; Environment (OS, browser version, device); Severity and Priority; and Evidence such as screenshots, screen recording, or logs."
+
+* **Ví dụ:** Title 'Login fails with valid account on Android 12' + 5 bước + 2 ảnh chụp + file `logcat`.
+* **🧠 Nhớ nhanh:** **Tiêu đề – Bước – Mong đợi/Thực tế – Môi trường – Mức độ – Bằng chứng**.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-10-test-plan-vs-test-strategy-documents"></a>CORE 10: Test Plan vs. Test Strategy Documents
-**[Answer]:** "A Test Strategy is a static, high-level document defined at the organizational or program level that dictates the overall testing philosophy and guidelines. A Test Plan is a dynamic, project-level document derived from the Test Strategy that describes the specific scope, schedule, target resources, risks, and deliverables for a particular release."
+**[Answer]:** "A Test Strategy is a high-level document at company or program level. It is stable and says how we test in general: approach, tools, and standards. A Test Plan is a project-level document created from that strategy. For one release it describes the scope, schedule, people, risks, and deliverables."
+
+* **Ví dụ:** Strategy = 'luật chơi chung của công ty'; Plan = 'kế hoạch cho đợt release này'.
+* **🧠 Nhớ nhanh:** Strategy = cấp công ty, ít đổi; Plan = cấp dự án, đổi theo từng release.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-11-applying-bva-and-ep-on-age-field-18-60"></a>CORE 11: Applying BVA and EP on Age Field (18-60)
-**[Answer]:** "Using Boundary Value Analysis (BVA), I will test the exact boundary values: 17 (invalid low), 18 (valid low boundary), 19 (valid), 59 (valid), 60 (valid high boundary), and 61 (invalid high). Using Equivalence Partitioning (EP), I split inputs into distinct classes: Valid range (18 to 60), Invalid Low (<18), Invalid High (>60), and Invalid Formats such as alphabetic characters, symbols, negative values, and empty inputs."
+**[Answer]:** "With Boundary Value Analysis I test the edges: 17 (invalid low), 18 (valid minimum), 19 (valid), 59 (valid), 60 (valid maximum), 61 (invalid high). With Equivalence Partitioning I split inputs into groups and test one value from each group: valid 18–60, too low (<18), too high (>60), and wrong format (letters, symbols, negative number, empty)."
+
+* **Ví dụ:** nhập 18 → OK; nhập 17 → báo lỗi; nhập 61 → báo lỗi; nhập 'abc' → báo lỗi.
+* **🧠 Nhớ nhanh:** BVA = test đúng mép và sát mép; EP = test 1 giá trị đại diện cho cả nhóm.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-12-essential-test-cases-for-a-user-login-feature"></a>CORE 12: Essential Test Cases for a User Login Feature
-**[Answer]:** "Beyond basic valid/invalid credentials, I must test: SQL Injection and XSS security vulnerability payloads, Brute Force protection (ensuring account lockout after N failed attempts), case-sensitivity of passwords, Remember Me cookies, Session Timeout duration, concurrent logins from multiple devices, Social Media OAuth logins, Forgot Password workflows, and UI responsiveness."
+**[Answer]:** "Login needs more than correct and wrong passwords. I also test: SQL Injection and XSS; brute force protection (account locks after N failed attempts); password is case-sensitive; Remember Me; session timeout; login from many devices at the same time; social login (Google/Facebook); Forgot Password flow; and the layout on small screens."
+
+* **Ví dụ:** nhập sai mật khẩu 5 lần → tài khoản bị khóa 15 phút.
+* **🧠 Nhớ nhanh:** 5 nhóm — **Chức năng – Bảo mật – Phiên đăng nhập – Nhiều thiết bị – Giao diện**.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-13-handling-cannot-reproduce-feedback-professionally"></a>CORE 13: Handling 'Cannot Reproduce' Feedback Professionally
-**[Answer]:** "I will remain collaborative. First, I will review my bug report to verify that the test steps, environment variables, and specific test data are completely clear. If the developer still faces issues, I will share execution recordings or system logs. If necessary, I will jump on a quick call to debug the issue together on their local environment. If it is an isolated environmental issue, I will document those specific conditions."
+**[Answer]:** "I stay friendly, never defensive. First, I re-read my bug report to check the steps, test data, and environment are clear. Then I share a recording or the logs. If it still cannot be reproduced, I debug together with the developer on their machine. Finally, if it only happens in a special environment, I write those exact conditions into the ticket."
+
+* **Ví dụ:** bug chỉ xảy ra trên Android 11 → ghi rõ model, phiên bản OS, phiên bản app vào ticket.
+* **🧠 Nhớ nhanh:** Kiểm tra lại report → gửi bằng chứng → debug cùng nhau → ghi lại điều kiện đặc biệt.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-14-determining-when-to-stop-testing-exit-criteria"></a>CORE 14: Determining When to Stop Testing (Exit Criteria)
-**[Answer]:** "Testing is an infinite process, so we stop when predefined Exit Criteria are fully satisfied. These criteria typically include: the complete execution of all high-priority test cases, target test coverage metrics achieved, the defect density dropping below an acceptable threshold, reaching the project timeline deadline, and getting formal risk acceptance from project stakeholders."
+**[Answer]:** "Testing is endless, so we agree Exit Criteria in advance and stop when they are met: all high-priority test cases executed, coverage target reached, open defects below the allowed limit, the deadline reached, and stakeholders accepting the remaining risk."
+
+* **Ví dụ:** '0 bug Critical, còn ≤ 5 bug Minor, chạy 100% test P1 → được dừng'.
+* **🧠 Nhớ nhanh:** Đủ test → đủ coverage → ít bug → hết thời gian → có người ký nhận rủi ro.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-15-standard-bug-tracking-workflow-inside-jira"></a>CORE 15: Standard Bug Tracking Workflow Inside Jira
-**[Answer]:** "I log the defect on Jira with all required steps, environment logs, and evidence. I assign the correct Epic link, component tag, and set the Severity/Priority. The ticket is assigned to the development team. Once marked as 'Fixed', I pull the latest CI build, execute comprehensive manual or automated retests, attach the new verification evidence to the ticket, and formally mark the Jira issue as 'Closed'."
+**[Answer]:** "I log the defect in Jira with clear steps, evidence, and environment. I set the Epic, Component, Severity, and Priority, then assign it to the dev team. When it is marked Fixed, I pull the latest build, retest it, attach the new evidence, and close the ticket."
+
+* **Ví dụ:** ticket đang ở trạng thái Fixed → QA retest → Pass → chuyển sang Closed kèm ảnh chụp mới.
+* **🧠 Nhớ nhanh:** **Log → Gán → Fix → Retest → Đóng**.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-16-verifying-get-post-put-delete-and-http-status-codes"></a>CORE 16: Verifying GET, POST, PUT, DELETE and HTTP Status Codes
-**[Answer]:** "For GET, I test data structure integrity and query/pagination parameters. For POST, I validate request payload constraints and verify duplicate prevention. For PUT, I verify partial/full object mutations and guarantee idempotency. For DELETE, I ensure resource destruction and proper handling of non-existent items. Common status codes include: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, and 500 Internal Server Error."
+**[Answer]:** "For GET I check the data comes back correctly, with filters and pagination working. For POST I check required fields, wrong data types, and duplicate prevention. For PUT I check the update really changes the data. For DELETE I check the item is gone and that deleting a non-existent item gives a clear error. Common status codes: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, and 500 Internal Server Error."
+
+* **Ví dụ:** POST thiếu email → 400 Bad Request; POST trùng email → 409 Conflict; DELETE id không tồn tại → 404.
+* **🧠 Nhớ nhanh:** **GET = đọc, POST = tạo, PUT = sửa, DELETE = xóa**; mã: 2xx thành công, 4xx lỗi phía client, 5xx lỗi server.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-17-focus-areas-and-tools in-responsive-web-testing"></a>CORE 17: Focus Areas and Tools in Responsive Web Testing
-**[Answer]:** "I check layout consistency across responsive breakpoints (mobile, tablet, desktop), proper execution of touch events, orientation shifts, typography scaling, image rendering, and menu transformations. I utilize Chrome DevTools for initial layout validation, combined with cloud testing execution engines like BrowserStack and real mobile handsets."
+**[Answer]:** "I check the layout at each breakpoint (mobile, tablet, desktop), touch events, screen rotation, font scaling, image rendering, and the menu changing into a hamburger icon. For tools I use Chrome DevTools for quick checks, BrowserStack for many real devices, and a real phone for final confirmation."
+
+* **Ví dụ:** màn 375px thì menu phải thành hamburger; màn 1440px thì menu nằm ngang.
+* **🧠 Nhớ nhanh:** Bố cục – Cảm ứng – Xoay màn hình – Chữ/hình – Menu. Tools: DevTools + BrowserStack + máy thật.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-18-cross-browser-testing-and-browser-selection-criteria"></a>CORE 18: Cross-Browser Testing and Browser Selection Criteria
-**[Answer]:** "It is necessary because different browsers utilize separate rendering engines, which can interpret CSS, HTML, and JS in slightly different ways. To avoid guessing, I select target browsers by analyzing real market share data via tools like Google Analytics or StatCounter tailored to our user base. Typically, we support the latest 2 versions of Chrome, Safari, Edge, and Firefox."
+**[Answer]:** "It is necessary because browsers use different rendering engines, so the same CSS, HTML, and JS can behave differently. I do not guess: I pick browsers using real data about our users from Google Analytics or StatCounter. Usually we support the latest 2 versions of Chrome, Safari, Edge, and Firefox."
+
+* **Ví dụ:** nút Submit bị lệch 2px trên Safari — chỉ phát hiện khi test trên Safari.
+* **🧠 Nhớ nhanh:** Khác engine → khác kết quả; chọn browser theo dữ liệu người dùng thật, không đoán.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-19-handling-200-unexecuted-test-cases-with-a-1-day-deadline"></a>CORE 19: Handling 200 Unexecuted Test Cases with a 1-Day Deadline
-**[Answer]:** "I will immediately adopt a Risk-Based Testing strategy. I will identify and execute only critical smoke tests, major end-to-end user transactions, and regression tests on modules directly impacted by recent code changes. I will immediately and transparently report the untested scope and associated risks to the Project Manager so the business can make an informed deployment decision."
+**[Answer]:** "I switch to Risk-Based Testing. I run only the critical smoke tests, the main end-to-end user flows, and regression tests for the modules changed recently. Then I report clearly to the PM: what was tested, what was not, and what risks are left, so the business can decide."
+
+* **Ví dụ:** 200 case còn lại → chọn 30 case quan trọng nhất (đăng nhập, thanh toán, đặt hàng) để chạy trước.
+* **🧠 Nhớ nhanh:** Smoke → luồng chính → module vừa thay đổi → báo cáo minh bạch.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-20-test-cases-for-an-e-commerce-add-to-cart-feature"></a>CORE 20: Test Cases for an E-commerce 'Add to Cart' Feature
-**[Answer]:** "I will validate: adding varying quantities (boundary limits, negative items, exceeding warehouse stock), adding out-of-stock items, guest checkout cart behavior, cart persistence after user logout and login, automatic price updates when applying promotional codes, real-time cart data synchronization across multiple open browser tabs, and system response time when handling massive cart volumes."
+**[Answer]:** "I test: adding quantity 1, many, 0, negative, and more than stock; adding an out-of-stock item; guest checkout; the cart still there after logout and login; price updates when a promo code is applied; cart syncing between 2 browser tabs; and response time with a very large cart."
+
+* **Ví dụ:** thêm 5 sản phẩm khi kho chỉ còn 3 → hệ thống phải báo 'chỉ còn 3'.
+* **🧠 Nhớ nhanh:** Số lượng – Tồn kho – Khách/Guest – Đăng nhập lại – Khuyến mãi – Đồng bộ tab – Hiệu năng.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-21-allocating-testing-scope-for-5-pm-build-releasing-at-9-am"></a>CORE 21: Allocating Testing Scope for 5 PM Build Releasing at 9 AM
-**[Answer]:** "I will first run a high-level Smoke Test suite to ensure the application doesn't crash immediately. Then, using Impact Analysis, I will isolate the specific modules affected by the latest code check-ins and run targeted regression tests. I will not attempt to rush through everything. Before leaving, I will send a concise status report highlighting what was tested, what was skipped, and the remaining risks."
+**[Answer]:** "First I run a quick Smoke Test to confirm the app is not broken. Then I use Impact Analysis: I find the modules changed by the latest commits and run regression tests only on those modules and their related features. I do not rush through everything. Before I leave, I send a short status report: what was tested, what was skipped, and what risks remain."
+
+* **Ví dụ:** build chỉ sửa phần thanh toán → test thanh toán + đơn hàng liên quan, bỏ qua module chat không đổi.
+* **🧠 Nhớ nhanh:** Smoke nhanh → Impact Analysis → báo cáo trước khi về.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-22-retesting-vs-regression-suite-scope-optimization"></a>CORE 22: Retesting vs. Regression Suite Scope Optimization
-**[Answer]:** "Retesting is a targeted action to verify that a specific reported defect has been fixed successfully. Regression testing checks if the new code changes introduced unintended side effects in unrelated areas. If the suite grows too large, I prioritize tests via Impact Analysis and Risk-Based selection, while actively moving stable, highly repetitive regression cases into our automated execution pipelines."
+**[Answer]:** "Retesting means checking the exact bug I reported, to confirm it is really fixed. Regression means checking that this fix did not break other features. When the regression suite gets too big, I prioritize with Impact Analysis and Risk-Based selection, and I automate the stable, repetitive cases so they run in the pipeline."
+
+* **Ví dụ:** Retest = login đã OK chưa; Regression = sau khi sửa login, nút Logout có còn chạy?
+* **🧠 Nhớ nhanh:** Retest = *'bug của tôi đã hết chưa?'*; Regression = *'sửa nó có làm vỡ chỗ khác không?'*.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-23-handling-critical-defects-releasing-with-pm-approval"></a>CORE 23: Handling Critical Defects Releasing with PM Approval
-**[Answer]:** "As a QA professional, my role is to expose risks, not block business releases. I will professionally document the exact technical impact, potential user friction, and steps to replicate the bug directly in the Jira ticket or via an official email thread. This ensures a clear audit trail. Once the PM formally acknowledges and signs off on accepting the risk, I will assist in preparing for a hotfix patch post-release."
+**[Answer]:** "My job is to show the risk, not to block the release. I document the bug clearly in Jira — impact, how to reproduce, effect on users — and email the stakeholders so there is an audit trail. When the PM officially accepts the risk and signs off, I help prepare a hotfix for after the release."
+
+* **Ví dụ:** bug chỉ ảnh hưởng 1% người dùng iOS cũ → PM ký chấp nhận → release, kèm kế hoạch hotfix.
+* **🧠 Nhớ nhanh:** Ghi rõ rủi ro → để PM ký nhận → chuẩn bị hotfix.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-24-comprehensive-test-scenarios-for-a-file-upload-component"></a>CORE 24: Comprehensive Test Scenarios for a File Upload Component
-**[Answer]:** "I would cover at least 15+ scenarios: Valid and invalid extensions, file size boundary checks (0KB, maximum allowed, oversized files), filenames with special characters or extreme lengths, corrupted files, security scanning using malware signatures (like Eicar files), spoofed MIME types, unexpected network disconnections during upload, multi-file concurrent uploads, and upload cancellation flows."
+**[Answer]:** "I test: valid and invalid extensions; size cases (0 KB, exact maximum, over maximum); file names with special characters or very long names; corrupted files; malware scanning with an Eicar test file; fake MIME type (rename .exe to .png); network lost in the middle of an upload; many files at once; and cancelling an upload."
+
+* **Ví dụ:** upload file 0 KB → hệ thống phải báo lỗi rõ ràng, không được treo.
+* **🧠 Nhớ nhanh:** Loại file – Kích thước – Tên file – File lỗi/virus – Giả MIME – Mạng – Nhiều file – Hủy.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-25-comprehensive-test-cases-for-a-website-search-box"></a>CORE 25: Comprehensive Test Cases for a Website Search Box
-**[Answer]:** "I will test empty submissions, single-character lookups, maximum input lengths, trailing and leading whitespace stripping, injection payloads (SQLi, XSS), alphanumeric and special character inputs, localized language scripts with accents, copy-paste functionality, autocomplete suggestion timing, recent search caching, and performance under heavy database requests."
+**[Answer]:** "I test empty search, one character, the maximum length, spaces before and after the keyword, SQLi and XSS strings, special characters, Vietnamese with accents, copy-paste, autocomplete timing, recent search history, and speed under heavy load."
+
+* **Ví dụ:** gõ `  tai nghe  ` (có khoảng trắng 2 đầu) → kết quả phải giống `tai nghe`.
+* **🧠 Nhớ nhanh:** Rỗng – 1 ký tự – Dài nhất – Khoảng trắng – Bảo mật – Ký tự đặc biệt – Gợi ý – Hiệu năng.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-26-handling-defect-rejections-marked-as-not-a-bug"></a>CORE 26: Handling Defect Rejections Marked as 'Not a Bug'
-**[Answer]:** "I will review the original requirements and user stories. If the specification clearly aligns with my bug report, I will reopen the Jira ticket, link the official documentation, or consult the Business Analyst for confirmation. If the specification is vague, I will organize a quick alignment call with the developer and BA to resolve the ambiguity and update our product documentation."
+**[Answer]:** "I check the requirement or user story first. If the specification is on my side, I reopen the ticket and attach the document, or ask the BA to confirm. If the specification is unclear, I book a quick call with the developer and the BA to agree on the correct behaviour, then we update the documentation."
+
+* **Ví dụ:** spec ghi 'mật khẩu tối thiểu 8 ký tự' nhưng app cho nhập 6 → reopen ticket + link spec.
+* **🧠 Nhớ nhanh:** Xem yêu cầu → có bằng chứng thì reopen + gắn link → chưa rõ thì họp 3 bên (Dev–BA–QA) → cập nhật tài liệu.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-27-test-scenario-vs-test-case-allocation-strategies"></a>CORE 27: Test Scenario vs. Test Case Allocation Strategies
-**[Answer]:** "A Test Scenario defines 'What to test' at a high level in a single sentence (e.g., Validate user checkout). A Test Case defines 'How to test' with detailed, step-by-step inputs and expected results. I use Test Scenarios in rapid Agile sprints where the team possesses high domain knowledge and speed is essential. I write detailed Test Cases for highly regulated industries (like automotive or finance) and when comprehensive audit trails are required."
+**[Answer]:** "A Test Scenario says WHAT to test, in one line: 'Validate user checkout'. A Test Case says HOW to test: steps, test data, and expected result. I use scenarios in fast Agile sprints where the team knows the domain well. I write full test cases for regulated fields like automotive or finance, where we need a clear audit trail."
+
+* **Ví dụ:** Scenario = 'Kiểm tra đăng nhập'; Test Case = `TC-01` với 5 bước, dữ liệu, kết quả mong đợi.
+* **🧠 Nhớ nhanh:** Scenario = *cái gì* (1 câu); Test Case = *làm thế nào* (từng bước).
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-28-testing-a-feature-with-absolute-zero-documentation"></a>CORE 28: Testing a Feature with Absolute Zero Documentation
-**[Answer]:** "I will perform Exploratory Testing to understand the feature's structure while executing competitor analysis to identify industry standard workflows. Simultaneously, I will conduct short interviews with the developers and product owner to map out basic flows. I will then explicitly document my testing assumptions and criteria, sharing them with the team for formal alignment before execution."
+**[Answer]:** "I combine 4 things: exploratory testing to learn the feature by using it; product and competitor analysis to see the standard flow; short interviews with the developer and the Product Owner; then I write down my assumptions and test criteria and ask the team to confirm them before I execute."
+
+* **Ví dụ:** chưa có tài liệu → tự khám phá app, so sánh với app cùng loại, hỏi PO, viết giả định gửi team xác nhận.
+* **🧠 Nhớ nhanh:** Khám phá → xem sản phẩm tương tự → hỏi Dev/PO → ghi giả định và xác nhận.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-29-performance-load-stress-and-spike-testing-metrics"></a>CORE 29: Performance, Load, Stress, and Spike Testing Metrics
-**[Answer]:** "Performance testing monitors general system responsiveness under normal conditions. Load testing evaluates behavior under expected peak user volumes. Stress testing pushes the system past its structural limits to discover the breaking point. Spike testing measures stability during sudden, extreme traffic surges and sharp drops. Vital metrics include Throughput (req/s), Error Rates, hardware metrics (CPU/RAM), and 95th or 99th percentile Response Times, which are far more accurate than simple averages."
+**[Answer]:** "Performance testing checks the system under normal conditions. Load testing checks it at the expected peak user volume. Stress testing pushes it past the limit to find the breaking point. Spike testing checks what happens with a sudden huge traffic increase and then a sharp drop. Key metrics: throughput (requests per second), error rate, CPU and RAM usage, and the 95th/99th percentile response time, which is more honest than an average."
+
+* **Ví dụ:** 1000 người dùng cùng lúc → xem P95 response time và error rate, không chỉ xem trung bình.
+* **🧠 Nhớ nhanh:** Bình thường – Cao điểm – Quá tải – Sốc; Metrics: Throughput, Error rate, CPU/RAM, P95/P99.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 ### <a id="core-30-processing-severe-security-flaws-and-data-exposure"></a>CORE 30: Processing Severe Security Flaws and Data Exposure
-**[Answer]:** "This is a critical security vulnerability. I will act ethically and discreetly. I will never capture screenshots containing real production PII (Personally Identifiable Information), and I will never discuss the issue on open or public communication channels. I will replicate the flaw using dummy test accounts, document the issue inside a confidential Jira ticket, and directly alert the Security Lead and Project Manager immediately."
+**[Answer]:** "This is a serious security issue, so I act quietly and ethically. I never screenshot real customer data (PII), and I never discuss the issue on public or open channels. I reproduce it with dummy accounts, log a confidential Jira ticket, and tell the Security Lead and the PM immediately."
+
+* **Ví dụ:** API trả về thông tin của người dùng khác → dùng tài khoản test, không chụp dữ liệu thật, báo Security ngay.
+* **🧠 Nhớ nhanh:** Không chụp dữ liệu thật → test bằng tài khoản giả → ticket bảo mật → báo Security Lead + PM ngay.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
