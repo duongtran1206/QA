@@ -29,7 +29,7 @@
     * [CORE 7: Black-box, White-box, and Gray-box Testing](#core-7-black-box-white-box-and-gray-box-testing)
     * [CORE 8: Functional vs. Non-functional Testing with Examples](#core-8-functional-vs-non-functional-testing-with-examples)
     * [CORE 9: Essential Components of a Great Bug Report](#core-9-essential-components-of-a-great-bug-report)
-    [CORE 10: Test Plan vs. Test Strategy Documents](#core-10-test-plan-vs-test-strategy-documents)
+    * [CORE 10: Test Plan vs. Test Strategy Documents](#core-10-test-plan-vs-test-strategy-documents)
     * [CORE 11: Applying BVA and EP on Age Field (18-60)](#core-11-applying-bva-and-ep-on-age-field-18-60)
     * [CORE 12: Essential Test Cases for a User Login Feature](#core-12-essential-test-cases-for-a-user-login-feature)
     * [CORE 13: Handling 'Cannot Reproduce' Feedback Professionally](#core-13-handling-cannot-reproduce-feedback-professionally)
@@ -50,6 +50,13 @@
     * [CORE 28: Testing a Feature with Absolute Zero Documentation](#core-28-testing-a-feature-with-absolute-zero-documentation)
     * [CORE 29: Performance, Load, Stress, and Spike Testing Metrics](#core-29-performance-load-stress-and-spike-testing-metrics)
     * [CORE 30: Processing Severe Security Flaws and Data Exposure](#core-30-processing-severe-security-flaws-and-data-exposure)
+* [PART 5: TEST LEVELS & TEST TYPES](#part-5-test-levels--test-types)
+    * [LEVEL 1: What Are Test Levels?](#level-1-what-are-test-levels)
+    * [LEVEL 2: Unit Testing](#level-2-unit-testing)
+    * [LEVEL 3: Integration Testing](#level-3-integration-testing)
+    * [LEVEL 4: System Testing](#level-4-system-testing)
+    * [LEVEL 5: Acceptance Testing (UAT) vs. SIT](#level-5-acceptance-testing-uat-vs-sit)
+    * [LEVEL 6: Test Pyramid and Shift-Left](#level-6-test-pyramid-and-shift-left)
 
 ---
 
@@ -479,5 +486,80 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 * **Ví dụ:** API trả về thông tin của người dùng khác → dùng tài khoản test, không chụp dữ liệu thật, báo Security ngay.
 * **🧠 Nhớ nhanh:** Không chụp dữ liệu thật → test bằng tài khoản giả → ticket bảo mật → báo Security Lead + PM ngay.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+---
+
+## <a id="part-5-test-levels--test-types"></a>PART 5: TEST LEVELS & TEST TYPES
+
+> **Cách học:** nhớ 4 cấp độ theo thứ tự từ nhỏ → lớn: **Unit → Integration → System → Acceptance (UAT)**.
+
+| # | Test level | Ai test | Test cái gì | Ví dụ |
+|---|---|---|---|---|
+| 1 | **Unit** | Developer | 1 hàm / 1 class riêng lẻ | hàm `calculate_tax()` trả đúng số |
+| 2 | **Integration** | Dev + QA | 2 module ghép lại với nhau | API login gọi Database |
+| 3 | **System** | QA | cả hệ thống chạy end-to-end | mua hàng: login → thêm giỏ → thanh toán |
+| 4 | **Acceptance (UAT)** | Khách hàng / PO / BA | có đúng nhu cầu nghiệp vụ không | khách test app trước khi go-live |
+
+---
+
+### <a id="level-1-what-are-test-levels"></a>LEVEL 1: What Are Test Levels?
+**[Interviewer]:** *"What are test levels? Could you name them?"*
+
+**[Answer]:** "A test level is a stage of testing, defined by how big the part under test is. There are 4 main levels: Unit (one function or class), Integration (modules working together), System (the whole system end to end), and Acceptance or UAT (the customer checks the business needs). Each level has its own goal, its own testers, and its own exit criteria."
+
+* **Ví dụ:** cùng là chức năng đăng nhập, nhưng Unit test hàm kiểm tra mật khẩu, Integration test API login + Database, System test app thật, còn UAT để khách xác nhận.
+* **🧠 Nhớ nhanh:** **Unit → Integration → System → Acceptance**, đi từ nhỏ đến lớn; mỗi cấp có người test và mục tiêu riêng.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="level-2-unit-testing"></a>LEVEL 2: Unit Testing
+**[Interviewer]:** *"What is unit testing and who does it?"*
+
+**[Answer]:** "Unit testing checks the smallest piece of code — one function, one method, or one class — in isolation. Developers usually write it, with frameworks like JUnit, pytest, or NUnit. It is the fastest and cheapest level, so it runs first in the pipeline."
+
+* **Ví dụ:** pytest test hàm `calculate_tax(100)` → kỳ vọng trả về 10.
+* **🧠 Nhớ nhanh:** Unit = 1 hàm, **dev viết**, chạy nhanh nhất và rẻ nhất; cô lập, không gọi Database hay API thật.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="level-3-integration-testing"></a>LEVEL 3: Integration Testing
+**[Interviewer]:** *"What is integration testing and what does it focus on?"*
+
+**[Answer]:** "Integration testing checks that two or more modules or services work correctly together. The focus is on the connections between them: data format, API contracts, and error handling. Usually developers and QA both take part."
+
+* **Ví dụ:** API login gọi Database + service gửi email → test xem dữ liệu có được ghi đúng và email có được gửi không.
+* **🧠 Nhớ nhanh:** Integration = test **chỗ nối** giữa các module; bug thường nằm ở đây chứ không nằm trong từng module.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="level-4-system-testing"></a>LEVEL 4: System Testing
+**[Interviewer]:** *"What is system testing and what does it cover?"*
+
+**[Answer]:** "System testing checks the complete system against the requirements, end to end. QA does this on the real build, usually on a staging environment. It covers both functional checks and non-functional checks like performance and security."
+
+* **Ví dụ:** luồng mua hàng đầy đủ: login → chọn sản phẩm → thêm vào giỏ → thanh toán → nhận email xác nhận.
+* **🧠 Nhớ nhanh:** System = **cả hệ thống, QA test, end-to-end**, gồm cả functional + non-functional.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="level-5-acceptance-testing-uat-vs-sit"></a>LEVEL 5: Acceptance Testing (UAT) vs. SIT
+**[Interviewer]:** *"What is acceptance testing, and what is the difference between SIT and UAT?"*
+
+**[Answer]:** "Acceptance testing, or UAT, is when the customer, PO, or BA checks that the software meets the business needs and is ready to go live. It is the last level before release. SIT is done by testers to confirm the system is technically correct, while UAT is done by business users to confirm it is useful for the business."
+
+* **Ví dụ:** SIT = QA test luồng đặt hàng chạy đúng kỹ thuật; UAT = khách hàng tự đặt 1 đơn trên bản staging rồi mới cho go-live.
+* **🧠 Nhớ nhanh:** **SIT = tester test kỹ thuật; UAT = khách test nghiệp vụ**; UAT pass xong mới release.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="level-6-test-pyramid-and-shift-left"></a>LEVEL 6: Test Pyramid and Shift-Left
+**[Interviewer]:** *"What is the Test Pyramid, and what does shift-left mean?"*
+
+**[Answer]:** "The Test Pyramid says we should have many unit tests at the bottom, fewer integration tests in the middle, and very few end-to-end or UI tests at the top, because tests get slower and more expensive as we go up. Shift-left means moving testing earlier: start testing from the requirements and unit level, so bugs are found when they are cheap to fix."
+
+* **Ví dụ:** 1000 unit test (chạy vài giây) + 100 integration test + 20 E2E test (chạy 30 phút) — không nên làm ngược lại.
+* **🧠 Nhớ nhanh:** **Kim tự tháp: đáy nhiều Unit – giữa Integration – đỉnh ít E2E**; shift-left = test sớm, sửa rẻ.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
