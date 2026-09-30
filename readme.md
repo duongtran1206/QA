@@ -57,6 +57,21 @@
     * [LEVEL 4: System Testing](#level-4-system-testing)
     * [LEVEL 5: Acceptance Testing (UAT) vs. SIT](#level-5-acceptance-testing-uat-vs-sit)
     * [LEVEL 6: Test Pyramid and Shift-Left](#level-6-test-pyramid-and-shift-left)
+* [PART 6: BEHAVIOUR & HR QUESTIONS](#part-6-behaviour--hr-questions)
+    * [HR 1: Why Do You Want to Join EPAM?](#hr-1-why-do-you-want-to-join-epam)
+    * [HR 2: Why Are You Leaving Your Current Company?](#hr-2-why-are-you-leaving-your-current-company)
+    * [HR 3: What Are Your Strengths?](#hr-3-what-are-your-strengths)
+    * [HR 4: What Is Your Weakness?](#hr-4-what-is-your-weakness)
+    * [HR 5: Tell Me About a Conflict with a Developer](#hr-5-tell-me-about-a-conflict-with-a-developer)
+    * [HR 6: Tell Me About a Mistake You Made](#hr-6-tell-me-about-a-mistake-you-made)
+    * [HR 7: How Do You Handle Pressure and Tight Deadlines?](#hr-7-how-do-you-handle-pressure-and-tight-deadlines)
+    * [HR 8: Tell Me About a Time You Took Ownership](#hr-8-tell-me-about-a-time-you-took-ownership)
+    * [HR 9: How Do You Handle Criticism and Negative Feedback?](#hr-9-how-do-you-handle-criticism-and-negative-feedback)
+    * [HR 10: Where Do You See Yourself in 3-5 Years?](#hr-10-where-do-you-see-yourself-in-3-5-years)
+    * [HR 11: Why Should We Hire You?](#hr-11-why-should-we-hire-you)
+    * [HR 12: What Are Your Salary Expectations?](#hr-12-what-are-your-salary-expectations)
+    * [HR 13: Are You Willing to Relocate, Travel, or Work Overtime?](#hr-13-are-you-willing-to-relocate-travel-or-work-overtime)
+    * [HR 14: Do You Have Any Questions for Us?](#hr-14-do-you-have-any-questions-for-us)
 
 ---
 
@@ -991,5 +1006,275 @@ _**[⬆ Back to Table of Contents](#table-of-contents)**_
 
 * **Ví dụ:** 1000 unit test (chạy vài giây) + 100 integration test + 20 E2E test (chạy 30 phút) — không nên làm ngược lại.
 * **🧠 Nhớ nhanh:** **Kim tự tháp: đáy nhiều Unit – giữa Integration – đỉnh ít E2E**; shift-left = test sớm, sửa rẻ.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+---
+
+## <a id="part-6-behaviour--hr-questions"></a>PART 6: BEHAVIOUR & HR QUESTIONS
+
+> **Mẹo:** câu trả lời vẫn theo 3 nhịp **First / Second / Third** rồi chốt bằng **In short:**. Với câu hỏi hành vi, luôn kèm **1 ví dụ thật** (Situation → Task → Action → Result), tuyệt đối không nói chung chung.
+
+---
+
+### <a id="hr-1-why-do-you-want-to-join-epam"></a>HR 1: Why Do You Want to Join EPAM?
+**[Interviewer]:** *"Why do you want to join EPAM?"*
+
+**[Answer]:**
+> "I have three main reasons.
+>
+> First, the projects. EPAM works with large global clients, so I can test bigger systems with more complex architecture than I can see now.
+>
+> Second, the engineering culture. EPAM has strong automation and engineering standards, and I learn fastest when I work with people who are better than me in different areas.
+>
+> Third, my own goals. I want to grow from writing test scripts into designing test architecture, and EPAM is a place where I can do that on real international projects.
+>
+> In short: bigger projects, a stronger engineering culture, and a clear path for my growth."
+
+* **Ví dụ:** Nói cụ thể thay vì "vì EPAM là công ty lớn": mình muốn làm việc với code review, CI/CD chuẩn và khách hàng quốc tế — giống những gì mình đang làm ở LG nhưng ở quy mô lớn hơn.
+* **🧠 Nhớ nhanh:** **Dự án lớn – Văn hoá kỹ thuật – Lộ trình phát triển**.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-2-why-are-you-leaving-your-current-company"></a>HR 2: Why Are You Leaving Your Current Company?
+**[Interviewer]:** *"Why are you leaving your current company?"*
+
+**[Answer]:**
+> "I am not leaving because of a problem. I am leaving because of growth.
+>
+> First, I have done my current work well for a while: custom Robot Framework libraries, the AI test-generation tool, and the Jenkins infrastructure. I enjoy it, but the scope is now stable.
+>
+> Second, I want new challenges: different domains, more complex systems, and international teams.
+>
+> In short: I am grateful for what I learned there, and I am ready for the next step."
+
+* **Ví dụ:** Tuyệt đối không nói xấu sếp/đồng nghiệp. Câu mẫu: "Em học được nhiều ở công ty hiện tại, và giờ em muốn thử thách lớn hơn."
+* **🧠 Nhớ nhanh:** Nói về **tăng trưởng**, không nói xấu công ty cũ. Từ khoá: *not a problem, but growth*.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-3-what-are-your-strengths"></a>HR 3: What Are Your Strengths?
+**[Interviewer]:** *"What are your strengths?"*
+
+**[Answer]:**
+> "My strongest points are three.
+>
+> First, I write code that other people can maintain. I split tests into layers and I reuse keywords, so my projects stay clean when the team grows.
+>
+> Second, I am good at debugging hard problems. When a test is flaky, I look for the real cause instead of adding a sleep.
+>
+> Third, I am the bridge between hardware and software teams. I worked with Korean engineers and with the people on the production line, so I understand both sides.
+>
+> In short: clean code, real debugging, and good communication with both sides."
+
+* **Ví dụ:** Mỗi điểm mạnh phải có bằng chứng: "Test lúc pass lúc fail → em tìm ra do node Jenkins dùng độ phân giải khác, sửa bằng explicit wait thay vì thêm sleep."
+* **🧠 Nhớ nhanh:** **Code sạch – Debug giỏi – Cầu nối giữa các team**; mỗi ý kèm 1 ví dụ.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-4-what-is-your-weakness"></a>HR 4: What Is Your Weakness?
+**[Interviewer]:** *"What is your weakness?"*
+
+**[Answer]:**
+> "My main weakness is that I used to be too focused on technical details.
+>
+> First, early in my career I spent too much time making one test case perfect, and it slowed the whole suite down.
+>
+> Second, I fixed it with a simple habit: before I start, I ask what the real risk is and how much time it deserves. Now I test the risky parts deeply and keep the rest efficient.
+>
+> I also say yes too often when teammates ask for help. I am learning to plan my own tasks first, and then give a clear time when I can support them.
+>
+> In short: a real weakness, a real fix, and progress I can prove."
+
+* **Ví dụ:** Đừng nói "em là người cầu toàn" rồi dừng. Nói rõ: trước đây dành 2 ngày cho 1 test case ít rủi ro, giờ áp dụng risk-based testing.
+* **🧠 Nhớ nhanh:** Chọn weakness **thật nhưng không phá công việc**, luôn kèm **cách sửa + kết quả**.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-5-tell-me-about-a-conflict-with-a-developer"></a>HR 5: Tell Me About a Conflict with a Developer
+**[Interviewer]:** *"Tell me about a time you had a conflict with a developer."*
+
+**[Answer]:**
+> "In my work, conflicts are usually about one question: is this a bug or the expected behaviour? I handle it in three steps.
+>
+> First, I collect the evidence: the exact steps, the logs, and the requirement or user story.
+>
+> Second, I talk to the developer privately, not in a public channel. I show the evidence and ask for their point of view, because sometimes I miss a design decision.
+>
+> Third, if we still disagree, we bring the BA or PO in and decide based on the specification, not on opinions. Then we update the ticket or the document.
+>
+> In short: evidence first, private talk second, and the specification decides — not the loudest voice."
+
+* **Ví dụ:** Dev bảo "not a bug" → mình mở lại spec + video + logcat, mời BA vào, cuối cùng thống nhất reopen ticket và cập nhật Acceptance Criteria.
+* **🧠 Nhớ nhanh:** **Bằng chứng → nói riêng → BA/PO quyết theo spec**; không tranh cãi cảm tính, không "đấu tố" trên chat chung.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-6-tell-me-about-a-mistake-you-made"></a>HR 6: Tell Me About a Mistake You Made
+**[Interviewer]:** *"Tell me about a mistake you made at work."*
+
+**[Answer]:**
+> "A mistake I remember well was about the test environment.
+>
+> First, the situation: I flashed a new build to a hardware board, and after that our smoke tests failed again and again. I thought the build was broken and asked the team to wait, and we lost about half a day.
+>
+> Second, the real cause was my own mistake: I used the wrong hardware version for that board.
+>
+> Third, I fixed it in two ways. I re-flashed the correct version immediately, and I added a version check at the start of the pipeline, so now the tool verifies the board and the firmware version before running any test.
+>
+> In short: I admitted it early, fixed the root cause, and turned it into an automatic check."
+
+* **Ví dụ:** Kể lỗi thật, ngắn, và tập trung vào **cách phòng ngừa** (check version tự động trong pipeline) — đó là thứ nhà tuyển dụng muốn nghe.
+* **🧠 Nhớ nhanh:** **Kể lỗi thật (nhỏ) → nhận ngay → thêm biện pháp phòng ngừa**; đừng nói "em không có lỗi nào".
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-7-how-do-you-handle-pressure-and-tight-deadlines"></a>HR 7: How Do You Handle Pressure and Tight Deadlines?
+**[Interviewer]:** *"How do you handle pressure and tight deadlines?"*
+
+**[Answer]:**
+> "I handle pressure with planning, not with panic.
+>
+> First, I put the work in risk order: what must be tested today, and what can wait. I use risk-based testing instead of trying to do everything.
+>
+> Second, I tell the project manager early, with real numbers: what is tested, what is not, and what risk is left. Bad news early is always cheaper than bad news late.
+>
+> Third, I protect my focus: I stop reading every message, and I finish the critical work with a clear head.
+>
+> In short: prioritise by risk, communicate early, and stay calm until the critical work is done."
+
+* **Ví dụ:** 5h chiều có build, 9h sáng mai release → chạy smoke trước, rồi regression cho module vừa sửa, rồi gửi report trước khi về.
+* **🧠 Nhớ nhanh:** **Ưu tiên theo rủi ro – báo sớm – giữ bình tĩnh**. Áp lực không có nghĩa là phải làm hết mọi thứ.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-8-tell-me-about-a-time-you-took-ownership"></a>HR 8: Tell Me About a Time You Took Ownership
+**[Interviewer]:** *"Tell me about a time you took ownership of something outside your job scope."*
+
+**[Answer]:**
+> "The best example is our Jenkins infrastructure.
+>
+> First, the situation: our tests ran on local machines, so the results were inconsistent and nobody could see a report.
+>
+> Second, nobody asked me to build a pipeline. But I saw that the team lost time every single day, so I set up the Jenkins nodes, wrote the Declarative Pipeline, and added device checks with Slack alerts.
+>
+> Third, the result: the tests now run automatically after every push, and broken devices are skipped automatically instead of creating false failures.
+>
+> In short: I fixed a daily problem that was nobody's task, because it was the right thing for the team."
+
+* **Ví dụ:** Dùng lại câu chuyện Part 2 – Q3, nhưng kể ngắn và nhấn mạnh: "không ai giao, nhưng em thấy cả team mất thời gian mỗi ngày".
+* **🧠 Nhớ nhanh:** Chọn việc **không ai giao nhưng cả team được lợi**, và luôn kết bằng **kết quả đo được**.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-9-how-do-you-handle-criticism-and-negative-feedback"></a>HR 9: How Do You Handle Criticism and Negative Feedback?
+**[Interviewer]:** *"How do you handle criticism or negative feedback?"*
+
+**[Answer]:**
+> "I take feedback as free information.
+>
+> First, I listen to the whole thing and I do not defend myself immediately. I write it down, because emotions hide details.
+>
+> Second, I ask one question: can you show me a specific example? A concrete case tells me exactly what to change.
+>
+> Third, I make the change visible. For example, after feedback that my test scripts were hard to read, I refactored them into layers and asked for a second review.
+>
+> In short: listen, ask for the example, then show the improvement."
+
+* **Ví dụ:** Feedback "script khó đọc" → tách Tests / Resources / Libraries / Data rồi mời review lại lần 2 để chứng minh đã sửa.
+* **🧠 Nhớ nhanh:** **Nghe hết – hỏi ví dụ cụ thể – sửa và cho thấy kết quả**; không phản bác ngay.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-10-where-do-you-see-yourself-in-3-5-years"></a>HR 10: Where Do You See Yourself in 3-5 Years?
+**[Interviewer]:** *"Where do you see yourself in three to five years?"*
+
+**[Answer]:**
+> "In three to five years, I want to be a strong automation engineer, and a person the team can rely on for framework design.
+>
+> First, the near term: I want to master test framework architecture and improve my English communication with international clients.
+>
+> Second, the middle term: I want to own automation for a whole module or product, and mentor junior testers.
+>
+> Third, I want my work to be measured by real results: shorter test cycles, fewer flaky tests, and better quality for the end user.
+>
+> In short: deep technical skills first, then leading automation and teaching others."
+
+* **Ví dụ:** Nói "em muốn đi sâu vào automation architecture rồi dẫn dắt module" — gắn với công việc của EPAM, không nói chung chung.
+* **🧠 Nhớ nhanh:** **Sâu kỹ thuật → dẫn dắt module → hướng dẫn người mới**. Đừng nói "em muốn làm quản lý rồi bỏ testing".
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-11-why-should-we-hire-you"></a>HR 11: Why Should We Hire You?
+**[Interviewer]:** *"Why should we hire you?"*
+
+**[Answer]:**
+> "I believe I bring three things.
+>
+> First, I already work in the hard part of automation: Android, embedded boards, and real devices, not only web pages. So I can contribute quickly.
+>
+> Second, I built real infrastructure from scratch — the AI test-generation tool and the Jenkins pipeline — so I can improve the process, not only write tests.
+>
+> Third, I am used to working with international teams, including Korean engineers, so communication in a global company is comfortable for me.
+>
+> In short: hands-on hardware automation, real infrastructure experience, and international communication."
+
+* **Ví dụ:** Trước khi trả lời, đọc lại JD của vị trí. Nếu JD nhấn mạnh API testing, chọn đúng 3 điểm mạnh khớp với JD đó.
+* **🧠 Nhớ nhanh:** **Đúng kỹ năng họ cần – biết làm cả hạ tầng – giao tiếp quốc tế tốt**; luôn gắn với JD.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-12-what-are-your-salary-expectations"></a>HR 12: What Are Your Salary Expectations?
+**[Interviewer]:** *"What are your salary expectations?"*
+
+**[Answer]:**
+> "I would like to understand the range for this position first.
+>
+> First, my expectation is based on the market rate for automation engineers with more than three years of experience in Android and embedded testing, plus my CI/CD and framework work.
+>
+> Second, I am flexible about the exact number. What matters more for me is the role, the project, and the chance to learn.
+>
+> Third, if we agree on the responsibilities, I am sure we can agree on the package.
+>
+> In short: I have a researched range in mind, and I am open to discussing it with the full picture of the role."
+
+* **Ví dụ:** Nếu bị hỏi con số cụ thể, đưa **1 khoảng** dựa trên khảo sát (ví dụ khoảng 20%), rồi hỏi lại: "Ngân sách của vị trí này đang ở khoảng nào ạ?".
+* **🧠 Nhớ nhanh:** **Hỏi lại range của công ty → đưa khoảng dựa trên thị trường → thể hiện linh hoạt**; không nói "em không biết" và cũng không chốt cứng 1 số.
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-13-are-you-willing-to-relocate-travel-or-work-overtime"></a>HR 13: Are You Willing to Relocate, Travel, or Work Overtime?
+**[Interviewer]:** *"Are you willing to relocate, travel, or work overtime if the project needs it?"*
+
+**[Answer]:**
+> "I am open to it, and I like to be clear about how I work.
+>
+> First, about travel and onsite work: I have worked with Korean engineers before and I went to Gumi for the Google Build Approval Test, so I am comfortable working abroad for a period of time when the project needs it.
+>
+> Second, about overtime: I understand that release weeks can be busy and I am ready to support the team. At the same time, I work best with good planning, because overtime every week usually means the plan is wrong.
+>
+> In short: I am flexible for real needs, and I care about sustainable planning."
+
+* **Ví dụ:** Trả lời thẳng: sẵn sàng onsite ngắn hạn, sẵn sàng OT tuần release — nhưng nhấn mạnh làm việc có kế hoạch.
+* **🧠 Nhớ nhanh:** **Linh hoạt vì dự án, nhưng cần kế hoạch bền vững**; không nói "em OT vô hạn" cũng không nói "em không bao giờ OT".
+
+_**[⬆ Back to Table of Contents](#table-of-contents)**_
+
+### <a id="hr-14-do-you-have-any-questions-for-us"></a>HR 14: Do You Have Any Questions for Us?
+**[Interviewer]:** *"Do you have any questions for us?"*
+
+**[Answer]:**
+> "Yes, thank you. I have a few questions about the role and the team.
+>
+> First, about the work: what does the automation test suite look like today, and what is the biggest quality problem the team wants to solve this year?
+>
+> Second, about the process: how do QA and developers work together? Is there CI/CD with automated regression, and how much of the testing is still manual today?
+>
+> Third, about growth: how does EPAM support engineers who want to go deeper into automation architecture?
+>
+> In short: I ask about the real work, the process, and the growth path — not only about salary."
+
+* **Ví dụ:** Chuẩn bị 3 câu hỏi trước buổi phỏng vấn; đừng hỏi câu chỉ cần Google là có, và đừng chỉ hỏi về lương/OT.
+* **🧠 Nhớ nhanh:** **Công việc thật – Quy trình CI/CD – Lộ trình học**.
 
 _**[⬆ Back to Table of Contents](#table-of-contents)**_
